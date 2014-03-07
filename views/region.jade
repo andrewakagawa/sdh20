@@ -1,0 +1,464 @@
+
+!!! 5
+html(lang='en')
+head
+    meta(charset='utf-8')
+    title Chula Vista | Live Well San Diego
+    //
+       Bootstrap 
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    script(src='https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js')
+    script(src='https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js')
+    //
+       Latest compiled and minified JavaScript 
+    script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
+    link(href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic', rel='stylesheet', type='text/css')
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800', rel='stylesheet', type='text/css')
+    link(href='//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css', rel='stylesheet')
+    link(rel='stylesheet', href='style.css')
+    link(rel='stylesheet', href='bootstrap.min.css')
+    link(rel='stylesheet', href='bootstrap-2.3.2.css')
+    //
+      Load the AJAX API
+    script(type='text/javascript', src='https://www.google.com/jsapi')
+    script(type='text/javascript')
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+      // Create the data table.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Condition');
+      data.addColumn('number', 'Percentage');
+      data.addRows([
+      ['Cancer', 43.0],
+      ['Heart Disease', 33.8],
+      ['COPD', 9.3],
+      ['Stroke', 7.2],
+      ['Diabetes', 6.7],
+      ['Asthma', 0.0]
+      ]);
+      // Create the data2 table.
+      var data2 = new google.visualization.DataTable();
+      data2.addColumn('string', 'Condition');
+      data2.addColumn('number', 'Percentage');
+      data2.addRows([
+      ['Heart Disease', 38.4],
+      ['Stroke', 24.7],
+      ['Diabetes', 18.2],
+      ['COPD', 12.2],
+      ['Asthma', 6.5]
+      ]);
+      // Create the data3 table.
+      var data3 = new google.visualization.DataTable();
+      data3.addColumn('string', 'Condition');
+      data3.addColumn('number', 'Percentage');
+      data3.addRows([
+      ['COPD', 40.5],
+      ['Asthma', 35.3],
+      ['Diabetes', 14.4],
+      ['Stroke', 6.3],
+      ['Heart disease', 3.5]
+      ]);
+      var data4 = google.visualization.arrayToDataTable([
+      ['Year', 'Heart disease', 'Stroke', 'Asthma', 'COPD', 'Diabetes', 'Cancer'],
+      ['2010',  188.3,  49.5,  0.0,  52.9,  43.4,  246.5],
+      ['2011',  190.7,  40.5,  0.0,  52.6,  38.0,  242.4]
+      ]);
+      var data5 = google.visualization.arrayToDataTable([
+      ['Year', 'Heart disease', 'Stroke', 'Asthma', 'COPD', 'Diabetes'],
+      ['2010',  657.8,  407.9,  92.9,  184.8,  271.6],
+      ['2011',  535.7,  345.1,  90.6,  170.8,  253.6]
+      ]);
+      var data6 = google.visualization.arrayToDataTable([
+      ['Year', 'Heart disease', 'Stroke', 'Asthma', 'COPD', 'Diabetes'],
+      ['2010',  49.5,  93.7,  720.3,  708.1,  282.0],
+      ['2011',  64.7,  115.6,  647.0,  742.8,  263.1]
+      ]);
+      // Set chart options
+      var options = {'width':850,
+      'height':275,
+      legend: { position: "none" },
+      };
+      // Set chart options2
+      var options2 = {'width':850,
+      'height':275,
+      legend: { position: "none" },
+      };
+      // Set chart options3
+      var options3 = {'width':850,
+      'height':275,
+      legend: { position: "none" },
+      };
+      // Set chart options4
+      var options4 = {'width':850,
+      'height':300
+      };
+      // Set chart options4
+      var options5 = {'width':850,
+      'height':300
+      };
+      // Set chart options4
+      var options6 = {'width':850,
+      'height':300
+      };
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+      // Instantiate and draw our chart, passing in some options.
+      var chart2 = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
+      chart2.draw(data2, options2);
+      // Instantiate and draw our chart, passing in some options.
+      var chart3 = new google.visualization.ColumnChart(document.getElementById('chart_div3'));
+      chart3.draw(data3, options3);
+      // Instantiate and draw our chart, passing in some options.
+      var chart4 = new google.visualization.LineChart(document.getElementById('chart_div4'));
+      chart4.draw(data4, options4);
+      // Instantiate and draw our chart, passing in some options.
+      var chart5 = new google.visualization.LineChart(document.getElementById('chart_div5'));
+      chart5.draw(data5, options5);
+      // Instantiate and draw our chart, passing in some options.
+      var chart6 = new google.visualization.LineChart(document.getElementById('chart_div6'));
+      chart6.draw(data6, options6);
+      }
+  body
+    script(src='http://code.jquery.com/jquery.js')
+    script(src='bootstrap.min.js')
+    .navbar-wrapper
+      .container
+        .navbar.navbar-default.navbar-fixed-top(role='navigation')
+          ul.nav
+            li
+              a(href='index.html')
+                img.logo(src='LWSD_CMYK_BT_H.png')
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='SanDiegoCO.html') County-wide health data
+            li.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown')
+                | Explore your region's health
+                b.caret
+              .dropdown-menu.multi-column
+                .container-fluid
+                  .row-fluid
+                    .span3
+                      ul.dropdown-menu
+                        li
+                          a(href='#') Alpine
+                        li
+                          a(href='#') Anza-Borrego Springs
+                        li
+                          a(href='#') Carlsbad
+                        li
+                          a(href='#') Central SD
+                        li
+                          a(href='chulavista.html') Chula Vista
+                        li
+                          a(href='#') Coastal
+                        li
+                          a(href='#') Coronado
+                        li
+                          a(href='#') Del Mar-Mira Mesa
+                        li
+                          a(href='#') El Cajon
+                        li
+                          a(href='#') Elliott-Navajo
+                        li
+                          a(href='#') Escondido
+                    .span3
+                      ul.dropdown-menu
+                        li
+                          a(href='#') Fallbrook
+                        li
+                          a(href='#') Harbison-Crest/El Cajon
+                        li
+                          a(href='#') Jamul
+                        li
+                          a(href='#') Kearny Mesa
+                        li
+                          a(href='#') La Mesa
+                        li
+                          a(href='#') Laguna-Pine Valley
+                        li
+                          a(href='#') Lakeside
+                        li
+                          a(href='#') Lemon Grove
+                        li
+                          a(href='#') Mid-City
+                        li
+                          a(href='#') Miramar
+                    .span3
+                      ul.dropdown-menu
+                        li
+                          a(href='#') Mountain Empire
+                        li
+                          a(href='#') National City
+                        li
+                          a(href='#') North SD
+                        li
+                          a(href='#') Oceanside
+                        li
+                          a(href='#') Palomar-Julian
+                        li
+                          a(href='#') Pauma
+                        li
+                          a(href='#') Pendleton
+                        li
+                          a(href='#') Peninsula
+                        li
+                          a(href='#') Poway
+                        li
+                          a(href='#') Ramona
+                    .span3
+                      ul.dropdown-menu
+                        li
+                          a(href='#') San Dieguito
+                        li
+                          a(href='#') San Marcos
+                        li
+                          a(href='#') Santee
+                        li
+                          a(href='#') South Bay
+                        li
+                          a(href='#') Southeast SD
+                        li
+                          a(href='#') Spring Valley
+                        li
+                          a(href='#') Sweetwater
+                        li
+                          a(href='#') University
+                        li
+                          a(href='#') Valley Center
+                        li
+                          a(href='#') Vista
+            li
+              a(href='index.html#map') Map comparisons
+    .span3
+      ul.dropdown-menu
+        li
+          a(href='#') Fallbrook
+        li
+          a(href='#') Harbison-Crest/El Cajon
+        li
+          a(href='#') Jamul
+        li
+          a(href='#') Kearny Mesa
+        li
+          a(href='#') La Mesa
+        li
+          a(href='#') Laguna-Pine Valley
+        li
+          a(href='#') Lakeside
+        li
+          a(href='#') Lemon Grove
+        li
+          a(href='#') Mid-City
+        li
+          a(href='#') Miramar
+    .span3
+      ul.dropdown-menu
+        li
+          a(href='#') Mountain Empire
+        li
+          a(href='#') National City
+        li
+          a(href='#') North SD
+        li
+          a(href='#') Oceanside
+        li
+          a(href='#') Palomar-Julian
+        li
+          a(href='#') Pauma
+        li
+          a(href='#') Pendleton
+        li
+          a(href='#') Peninsula
+        li
+          a(href='#') Poway
+        li
+          a(href='#') Ramona
+    .span3
+      ul.dropdown-menu
+        li
+          a(href='#') San Dieguito
+        li
+          a(href='#') San Marcos
+        li
+          a(href='#') Santee
+        li
+          a(href='#') South Bay
+        li
+          a(href='#') Southeast SD
+        li
+          a(href='#') Spring Valley
+        li
+          a(href='#') Sweetwater
+        li
+          a(href='#') University
+        li
+          a(href='#') Valley Center
+        li
+          a(href='#') Vista
+    .container
+      h1 Chula Vista Health Stats
+      .row-fluid
+        .span8
+          iframe(width='800', height='450', frameborder='0', scrolling='no', marginheight='0', marginwidth='0', src='http://dianaeg2014.maps.arcgis.com/home/webmap/templates/OnePane/basicviewer/embed.html?webmap=943a54276f964eb5abd3a92cf8af50c2&gcsextent=-117.4808,32.4762,-116.6376,32.8421&displayslider=true&displayscalebar=true&displaylegend=true&displaydetails=true&displaybasemaps=true')
+        .span4.actions
+          .span9.actions.offset1
+            .span10.offset1
+              .statistics
+                #this-carousel-id.carousel.slide
+                  //
+                     class of slide for animation 
+                  .carousel-inner
+                    .item.active
+                      //
+                         class of active since it's the first item 
+                      .carousel-caption
+                        .span13
+                          h2 Overall Score Card
+                        .span13
+                          //
+                             linediv-l and linediv-r give dividing lines that look
+                                            different in horizontal and vertical layouts, illustrating
+                                            media queries. 
+                          h3 Deaths
+                          p 40 of 42
+                        .span13
+                          h3 Hospitalizations
+                          p 41 of 42
+                        .span13
+                          h3 Emergency Room Visits
+                          p 42 of 42
+                    .item
+                      .carousel-caption
+                        h3 Health Score Card
+                        p 40 of 42 Excercise at home (25.6%)
+                        p 36 of 42 Presently controlling diet (36.2%)
+                        p 36 of 42 Current Smokers (11.0%)
+                        p 14 of 42 Overweight/Obese (65.6%)
+                        p 22 of 42 Ate Fast Food 3+ Times per Week (18.9%)
+                        p 35 of 42 Eats 5+ Servings of Fruits & Vegetables - Ages 2-11 (49.5%)
+                        p 16 of 42 Physically Active 5+ Days for at least 1 Hour - Ages 5-11 (42.0%)
+                  //
+                     /.carousel-inner 
+                  //
+                      Next and Previous controls below
+                            href values must reference the id for this carousel 
+                  a.carousel-control.left(href='#this-carousel-id', data-slide='prev') ‹
+                  a.carousel-control.right(href='#this-carousel-id', data-slide='next') ›
+                //
+                   /.carousel 
+        .row-fluid
+          .span10.offset1
+            h2 What's making Chula Vista unhealthy
+            ul.nav.nav-tabs
+              li
+                a(href='#item1', data-toggle='tab') Deaths
+              li
+                a(href='#item2', data-toggle='tab') Hospitalizations
+              li
+                a(href='#item3', data-toggle='tab') Emergency
+            .tab-content
+              #item1.tab-pane.active
+                //
+                  Div that will hold the chart
+                #chart_div
+              #item2.tab-pane
+                //
+                  Div that will hold the chart
+                #chart_div2
+              #item3.tab-pane
+                //
+                  Div that will hold the chart
+                #chart_div3
+        p.caption
+          | COPD = Chronic obstructive pulmonary disease, which includes chronic bronchitis and emphysema.
+          br
+          | 2011 contributors to 3-4-50% in percentages
+        .row-fluid
+          .span12
+            .span10.offset1
+              h2 How Chula Vista has been doing
+              ul.nav.nav-tabs
+                li
+                  a(href='#item4', data-toggle='tab') Deaths
+                li
+                  a(href='#item5', data-toggle='tab') Hospitalizations
+                li
+                  a(href='#item6', data-toggle='tab') Emergency
+              .tab-content
+                #item4.tab-pane.active
+                  //
+                    Div that will hold the chart
+                  #chart_div4(style='width: 480px; height: 300px;')
+                #item5.tab-pane
+                  //
+                    Div that will hold the chart
+                  #chart_div5(style='width: 480px; height: 300px;')
+                #item6.tab-pane
+                  //
+                    Div that will hold the chart
+                  #chart_div6(style='width: 480px; height: 300px;')
+        p.caption
+          | COPD = Chronic obstructive pulmonary disease, which includes chronic bronchitis and emphysema.
+        .row-fluid
+          .span12
+            .span10.offset1
+              h2 What you can do
+              ul.list-unstyled.list-cta
+                li
+                  | Get educated
+                  ul
+                    li
+                      | Read more about
+                      a(href='http://www.cdc.gov/cancer/') cancer
+                      | and
+                      a(href='http://www.cdc.gov/heartdisease/')  heart disease
+              li
+                | Increase your physical activity
+                ul
+                  li
+                    | Take more
+                    a(href='http://www.sdmts.com/tripplanner.asp') public transportation
+                  li
+                    | Find a nearby
+                    a(href='http://www.chulavistaca.gov/City_Services/Community_Services/Public_Works_Operations/Parks/default.asp') park
+                    | or
+                    a(href='http://www.yelp.com/search?cflt=gyms&find_loc=Chula+Vista%2C+San+Diego%2C+CA') gym
+                  li
+                    | Join a
+                    a(href='http://www.meetup.com/find/events/fitness/?radius=50&userFreeform=Chula+Vista%2C+California%2C+USA&mcId=c91909&eventFilter=mysugg') physical activity group on Meetup.com
+              li
+                | Improve your diet
+                ul
+                  li
+                    | Look up your closest
+                    a(href='http://www.yelp.com/search?cflt=grocery&find_loc=Chula+Vista%2C+CA') supermarket
+                    | or
+                    a(href='http://www.ci.chula-vista.ca.us/Events/downtownFarmersMarket.asp') farmer's market
+              //
+                insert sponsored logos here
+              li
+                | Become an activist
+                ul
+                  li Petition your local representative to support more healthy initiatives
+                  address
+                    strong Congressman Juan Vargas
+                    br
+                    | 333 F Street, Suite A
+                    br
+                    | Chula Vista, CA 91910
+                    br
+                    | Phone: 619-422-5963
+                    br
+                    | Fax: 619-422-7290
+                    br
+                    | Website:
+                    a(href='https://vargas.house.gov/') https://vargas.house.gov/
+
