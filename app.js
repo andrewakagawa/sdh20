@@ -37,7 +37,7 @@ app.get('/', function(req, res){
   });
 });
 
-app.get('/about', function(req, res){
+app.get('/region', function(req, res){
   res.render('region', {
     title: 'Region'
   });
