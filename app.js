@@ -78,9 +78,9 @@ app.get('/region', function(req, res){
   });
 });
 
-app.get('/contact', function(req, res){
-  res.render('contact', {
-    title: 'Contact'
+app.get('/test.html', function(req, res){
+  res.render('test.html', {
+    title: 'D3 test'
   });
 });
 
