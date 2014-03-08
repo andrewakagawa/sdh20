@@ -29,8 +29,17 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+var fs = require('fs');
+var file = __dirname + '/javascripts/regions.json';
+fs.readFile(file, 'utf8', function (err, data) {
+  if (err) {
+    console.log('Error: ' + err);
+    return;
+  }
+  region = JSON.parse(data)
+  console.dir(data);
+});
 
-var region = require('./javascripts/regions.json');         
 
 function loadRegion(req, res, next) {
     var regName = req.params.regName;
