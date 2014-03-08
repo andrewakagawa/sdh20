@@ -30,11 +30,6 @@ if ('development' == app.get('env')) {
 }
 
 
-//create an array of 
-var region = [
-    { name: 'chulavista', info : 'Chula Vista!'},
-    { name : 'alpine', info : 'Alpine'}
-];
 
 $.ajax({
     beforeSend: function() { }, //Show spinner
