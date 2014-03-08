@@ -30,17 +30,15 @@ if ('development' == app.get('env')) {
 }
 
 
-
-$.ajax({
-    beforeSend: function() { }, //Show spinner
-
-            complete: function() {  }, //Hide spinner
-
-            type: 'POST',
-            url: javascripts/regions.json
-            dataType: 'JSON',
-            success: function(region){
-                                var region = region;
+var region = (function () {
+  var region = null;
+  $.ajax({
+            'async': false,
+            'global':false,
+            'url': javascripts/regions.json
+            'dataType': 'JSON',
+            'success': function(data){
+                                var region = data;
              }                               
           }); 
 
