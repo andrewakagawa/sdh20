@@ -29,8 +29,11 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-
-var region = require('./javascripts/regions.json');
+//create an array of
+var region = [
+    { name: 'chulavista', info : 'Chula Vista!'},
+    { name : 'alpine', info : 'Alpine'}
+];
 
 function loadRegion(req, res, next) {
     var regName = req.params.regName;
