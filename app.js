@@ -30,6 +30,41 @@ if ('development' == app.get('env')) {
 }
 
 
+//create an array of 
+var region = [
+    { name: 'chulavista', info : 'Welcome to ChulaVista!'},
+    { name : 'betty', info : 'this womans name is betty'}
+];
+
+
+function loadRegion(req, res, next) {
+    var regName = req.params.regName;
+    for(var i= 0, len = region.length; i < len; i++) {
+      if ( regName === region[i].name ) {
+        req.region = region[i];
+      }
+    }
+    if(!req.region) next(new Error('No such region ' + regName));
+    else next();
+}
+
+//routes data
+var sendInfo = function (req, res, next) {
+  res.send(req.region.info);
+}
+
+
+//view in browser
+app.get('/test/:regName', loadRegion, sendInfo, function(err, req, res, next) {
+   if (err) {
+
+
+      //redirects to home if error
+      res.redirect('/');
+   }
+});
+
+
 
 app.get('/', function(req, res){
   res.render('index', {
@@ -37,7 +72,7 @@ app.get('/', function(req, res){
   });
 });
 
-app.get('/region', function(req, res){
+app.get('/cv', function(req, res){
   res.render('region', {
     title: 'Region'
   });
