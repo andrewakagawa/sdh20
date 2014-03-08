@@ -30,19 +30,8 @@ if ('development' == app.get('env')) {
 }
 
 
-var region = (function () {
-  var region = null;
-  $.ajax({
-            'async': false,
-            'global':false,
-            'url': javascripts/regions.json
-            'dataType': 'JSON',
-            'success': function(data){
-                                var region = data;
-             }                               
-          }); 
-   return region;
-})();       
+var region = require('javascripts/regions.json');
+         
 
 function loadRegion(req, res, next) {
     var regName = req.params.regName;
