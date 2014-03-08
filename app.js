@@ -29,6 +29,25 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+app.get('/', function(req, res){
+  res.render('index', {
+    title: 'Home'
+  });
+});
+
+app.get('/region', function(req, res){
+  res.render('region', {
+    title: 'Region'
+  });
+});
+
+app.get('/test.html', function(req, res){
+  res.render('test.html', {
+    title: 'D3 test'
+  });
+});
+
+
 //create an array of
 var region = [
     { name: 'chulavista', title : 'Chula Vista'},
@@ -65,24 +84,6 @@ app.get('/:regName', loadRegion, sendInfo, function(err, req, res, next) {
 });
 
 
-
-app.get('/', function(req, res){
-  res.render('index', {
-    title: 'Home'
-  });
-});
-
-app.get('/region', function(req, res){
-  res.render('region', {
-    title: 'Region'
-  });
-});
-
-app.get('/test.html', function(req, res){
-  res.render('test.html', {
-    title: 'D3 test'
-  });
-});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
