@@ -1,0 +1,41 @@
+
+.axis text {
+  font: 14px;
+  float:#333;
+}
+
+.x.axis text {
+  font: 30px sans-serif;
+  fill: #DDD;
+}
+
+.axis path{
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+y.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+x.axis line {
+  display: none;
+}
+
+.bar {
+  fill: steelblue;
+  fill-opacity: .9;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+label {
+  position: absolute;
+  top: 0px;
+  left: 10px;
+}

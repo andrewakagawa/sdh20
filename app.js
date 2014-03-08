@@ -41,8 +41,8 @@ app.get('/region', function(req, res){
   });
 });
 
-app.get('/test.html', function(req, res){
-  res.render('test.html', {
+app.get('/test', function(req, res){
+  res.render('test', {
     title: 'D3 test'
   });
 });
