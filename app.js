@@ -30,7 +30,7 @@ if ('development' == app.get('env')) {
 }
 
 
-         
+var region = require('./javascripts/regions.json');         
 
 function loadRegion(req, res, next) {
     var regName = req.params.regName;
