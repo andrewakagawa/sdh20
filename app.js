@@ -41,7 +41,8 @@ var region = (function () {
                                 var region = data;
              }                               
           }); 
-
+   return region;
+})();       
 
 function loadRegion(req, res, next) {
     var regName = req.params.regName;
