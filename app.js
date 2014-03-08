@@ -32,8 +32,8 @@ if ('development' == app.get('env')) {
 
 //create an array of 
 var region = [
-    { name: 'chulavista', info : 'Welcome to ChulaVista!'},
-    { name : 'betty', info : 'this womans name is betty'}
+    { name: 'chulavista', info : 'Chula Vista!'},
+    { name : 'apline', info : 'Alpine'}
 ];
 
 
@@ -50,12 +50,14 @@ function loadRegion(req, res, next) {
 
 //routes data
 var sendInfo = function (req, res, next) {
-  res.send(req.region.info);
+  res.render('region',{
+    title: req.region.info
+  });
 }
 
 
 //view in browser
-app.get('/test/:regName', loadRegion, sendInfo, function(err, req, res, next) {
+app.get('/:regName', loadRegion, sendInfo, function(err, req, res, next) {
    if (err) {
 
 
@@ -72,7 +74,7 @@ app.get('/', function(req, res){
   });
 });
 
-app.get('/cv', function(req, res){
+app.get('/region', function(req, res){
   res.render('region', {
     title: 'Region'
   });
