@@ -31,8 +31,8 @@ if ('development' == app.get('env')) {
 
 //create an array of
 var region = [
-    { name: 'chulavista', info : 'Chula Vista!'},
-    { name : 'alpine', info : 'Alpine'}
+    { name: 'chulavista', title : 'Chula Vista'},
+    { name : 'alpine', title : 'Alpine'}
 ];
 
 function loadRegion(req, res, next) {
@@ -49,7 +49,7 @@ function loadRegion(req, res, next) {
 //routes data
 var sendInfo = function (req, res, next) {
   res.render('region',{
-    title: req.region.info
+    title: req.region.title
   });
 }
 
