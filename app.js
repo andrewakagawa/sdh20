@@ -33,7 +33,7 @@ if ('development' == app.get('env')) {
 //create an array of 
 var region = [
     { name: 'chulavista', info : 'Chula Vista!'},
-    { name : 'apline', info : 'Alpine'}
+    { name : 'alpine', info : 'Alpine'}
 ];
 
 
