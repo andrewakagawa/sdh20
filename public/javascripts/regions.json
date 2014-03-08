@@ -1,0 +1,6 @@
+{
+[
+    { name: 'chulavista', info : 'Chula Vista!'},
+    { name : 'alpine', info : 'Alpine'}
+]
+}

@@ -36,6 +36,19 @@ var region = [
     { name : 'alpine', info : 'Alpine'}
 ];
 
+$.ajax({
+    beforeSend: function() { }, //Show spinner
+
+            complete: function() {  }, //Hide spinner
+
+            type: 'POST',
+            url: javascripts/regions.json
+            dataType: 'JSON',
+            success: function(region){
+                                var region = region;
+             }                               
+          }); 
+
 
 function loadRegion(req, res, next) {
     var regName = req.params.regName;
