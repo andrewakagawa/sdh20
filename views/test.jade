@@ -15,7 +15,7 @@ block content
       "diabetes",
       "cancer"
       ];
-      d3.csv("data.csv", type, function(error, states) {
+      d3.csv("csv/data.csv", type, function(error, states) {
       if (error) throw error;
       var stateById = d3.map();
       states.forEach(function(d) { stateById.set(d.SRA, d); });
