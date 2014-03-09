@@ -22,7 +22,7 @@ block content
         return {
           name: name,
           values: data.map(function(d){
-            return{ SRA: d.SRA, first: +d[heartdisease], second: +d[stroke]};
+            return{ SRA: d.SRA, first: +d["heartdisease"], second: +d["stroke"]};
           })
         };
       });
