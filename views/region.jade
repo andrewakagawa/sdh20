@@ -245,6 +245,7 @@ block content
                 //
                   Div that will hold the chart
                 #chart_div
+                (function() {
                   script.
                     var dispatch = d3.dispatch("load", "statechange");
                     var groups = [
@@ -336,7 +337,7 @@ block content
                     d.total = d3.sum(groups, function(k) { return d[k] = +d[k]; });
                     return d;
                     }
-
+                })();
 
 
 
@@ -345,6 +346,7 @@ block content
                 //
                   Div that will hold the chart
                 #chart_div2
+                (function() {
                   script.
                     var dispatch = d3.dispatch("load", "statechange");
                     var groups = [
@@ -437,6 +439,8 @@ block content
                     d.total = d3.sum(groups, function(k) { return d[k] = +d[k]; });
                     return d;
                     }
+                })();
+
 
 
 
