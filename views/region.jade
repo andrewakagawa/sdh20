@@ -291,7 +291,7 @@ block content
                     .scale(y)
                     .orient("left")
                     .tickFormat(d3.format(".2s"));
-                    var svg = d3.select("body").append("svg")
+                    var svg = d3.select("#chart_div").append("svg")
                     .attr("width", width + margin.left + margin.right)
                     .attr("height", height + margin.top + margin.bottom)
                     .append("g")
@@ -324,7 +324,7 @@ block content
                     .innerRadius(radius - 70);
                     var pie = d3.layout.pie()
                     .sort(null);
-                    var svg = d3.select("body").append("svg")
+                    var svg = d3.select("#chart_div").append("svg")
                     .attr("width", width)
                     .attr("height", height)
                     .append("g")
