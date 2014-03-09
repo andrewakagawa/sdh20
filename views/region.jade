@@ -208,7 +208,7 @@ block content
                         .span13
                           h3 Hospitalizations
                           p 41 of 42
-                        .span13
+                        .span13n
                           h3 Emergency Room Visits
                           p 42 of 42
                     .item
@@ -261,7 +261,7 @@ block content
                     var stateById = d3.map();
                     states.forEach(function(d) { stateById.set(d.SRA, d); });
                     dispatch.load(stateById);
-                    dispatch.statechange(stateById.get("Alpine"));
+                    dispatch.statechange(stateById.get(#{title}));
                     });
 
                     // A drop-down menu for selecting a state; uses the "menu" namespace.
