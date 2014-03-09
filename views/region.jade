@@ -378,7 +378,7 @@ block content
                     var stateById = d3.map();
                     states.forEach(function(d) { stateById.set(d.SRA, d); });
                     dispatch.load(stateById);
-                    dispatch.statechange(stateById.get("Alpine"));
+                    dispatch.statechange(stateById.get(!{JSON.stringify(title)}));
                     });
 
 
