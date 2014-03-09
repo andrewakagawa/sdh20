@@ -37,6 +37,7 @@ block content
       select.property("value", state.SRA);
       });
       });
+
       // A bar chart to show total population; uses the "bar" namespace.
       dispatch.on("load.bar", function(stateById) {
       var margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -70,6 +71,7 @@ block content
       .attr("height", y(0) - y(d.total));
       });
       });
+
       // A pie chart to show population by age group; uses the "pie" namespace.
       dispatch.on("load.pie", function(stateById) {
       var width = 880,
@@ -104,6 +106,7 @@ block content
       });
       });
       });
+
       // Coerce population counts to numbers and compute total per state.
       function type(d) {
       d.total = d3.sum(groups, function(k) { return d[k] = +d[k]; });
