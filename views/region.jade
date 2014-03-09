@@ -246,7 +246,7 @@ block content
                   Div that will hold the chart
                 #chart_div
                   script.
-                  (function() {
+                    (function() {
                     var dispatch = d3.dispatch("load", "statechange");
                     var groups = [
                     "heartdisease",
@@ -337,7 +337,7 @@ block content
                     d.total = d3.sum(groups, function(k) { return d[k] = +d[k]; });
                     return d;
                     }
-                  }());
+                    }());
 
 
 
@@ -347,7 +347,7 @@ block content
                   Div that will hold the chart
                 #chart_div2
                   script.
-                  (function() {
+                    (function() {
                     var dispatch = d3.dispatch("load", "statechange");
                     var groups = [
                     "deathrate",
@@ -439,7 +439,7 @@ block content
                     d.total = d3.sum(groups, function(k) { return d[k] = +d[k]; });
                     return d;
                     }
-                  }());
+                    }());
 
 
 
