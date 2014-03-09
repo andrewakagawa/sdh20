@@ -18,14 +18,7 @@ block content
       d3.csv("csv/data.csv", type, function(error, states) {
       if (error) throw error;
       
-      var stateById = d3.map(function(name) {
-        return {
-          name: name,
-          values: data.map(function(d){
-            return{ SRA: d.SRA, first: +d["heartdisease"], second: +d["stroke"]};
-          })
-        };
-      });
+      var stateById = d3.map();
       states.forEach(function(d) { stateById.set(d.SRA, d); });
       dispatch.load(stateById);
       dispatch.statechange(stateById.get("Alpine"));
