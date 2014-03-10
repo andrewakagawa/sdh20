@@ -1,6 +1,45 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title} my awesome friend
+  script(src='http://d3js.org/d3.v3.min.js')
+  script(src='http://code.jquery.com/jquery.js')
+  script(src='/lib/bootstrap/bootstrap.min.js')
+  include includes/mainmenu.jade
+
+  .text-center
+    .container
+        h1 Using data for better health in San Diego
+        p.bkgdlead 3 - 4 - 50
+        .col-lg-4
+          h2 3 behaviors
+          img(src='images/LWSDhomepageicons_behavioricon.png')
+          p Poor diet - Physical inactivity - Smoking
+        .col-lg-4
+          h2 4 chronic diseases
+          img(src='images/LWSDhomepageicons_diseaseicons.png')
+          p Cancer - Heart disease/stroke - Asthma/COPD - Diabetes
+        .col-lg-4
+          h2 50% of deaths
+          img(src='images/LWSDhomepageicons_deathicon.png')
+          p Worldwide
+    .lead.intro.well
+      p
+        | Chronic diseases are now the major cause of death and disability worldwide, having surpassed infectious diseases and injuries. Three behaviors contribute to four chronic diseases that cause over 50% of all deaths worldwide, a concept known as 3-4-50.
+      p
+        | In 2007 within San Diego County, the 3-4-50 diseases caused 57% of deaths and cost $4 billion in direct treatment.
+      p
+        | This website contains data made possible by the
+        a(href='http://www.chcf.org/about') California Healthcare Foundation
+        | ,
+        a(href='http://www.chcf.org/projects/2012/free-the-data') CHCF's Free the Data Initiative
+        | ,
+        a(href='http://www.sdcounty.ca.gov/hhsa/') San Diego County Health and Human Services Agency
+        | , and
+        a(href='http://www.livewellsd.org/') Live Well San Diego
+        | . Visitors are welcome to explore the health of San Diego and all the regions within it.
+    h2#map.text-center Explore health data in San Diego
+    //
+      insert swipe map here
+    .text-center.btn-cta
+      a.btn-lg.btn-warning(href='SanDiegoCO.html', role='button') How does your region stack up?
 
