@@ -42,6 +42,13 @@ app.get('/region', function(req, res){
   });
 });
 
+app.get('/SDCO', function(req, res){
+  res.render('SDCO', {
+    title: 'San Diego County'
+  });
+});
+
+
 app.get('/test', function(req, res){
   res.render('test', {
     title: 'D3 test'
@@ -92,7 +99,6 @@ var region = [
     { name: 'university', title : 'University'},
     { name: 'valley', title : 'ValleyCenter'},
     { name: 'vista', title : 'Vista'},
-    { name: 'SDCO', title : 'San Diego County'}
 ];
 
 function loadRegion(req, res, next) {
