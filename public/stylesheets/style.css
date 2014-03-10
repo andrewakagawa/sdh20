@@ -211,13 +211,9 @@ h1, h2 {
       
       
      .main-pareto {
-      height: 2600px;
-  margin-top: -350px;
-      overflow:hidden;
      }
      
      .tab-content{
-        overflow:hidden !important;
      }
 
      
