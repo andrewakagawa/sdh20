@@ -4,10 +4,6 @@
   float:#333;
 }
 
-.x.axis text {
-  font: 30px sans-serif;
-  fill: #DDD;
-}
 
 .axis path{
   fill: none;
@@ -35,7 +31,6 @@ x.axis line {
 }
 
 label {
-  position: relative;
   top: 0px;
   left: 10px;
 }
