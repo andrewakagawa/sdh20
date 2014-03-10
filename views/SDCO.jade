@@ -39,14 +39,14 @@ block content
                  .scale(x)
                   .orient("bottom")
                   var svg = d3.select("#chart_div").append("svg")
-                  .attr("width", width + margin.left + margin.right)
-                  .attr("height", height + margin.top + margin.bottom)
-                  .append("g")
-                  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-                  d3.csv("data.csv", function(error, data) {
-                  data.forEach(function(d) {
-                  d.deathrate = +d.deathrate;
-                  });
+                   .attr("width", width + margin.left + margin.right)
+                   .attr("height", height + margin.top + margin.bottom)
+                   .append("g")
+                   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                   d3.csv("data.csv", function(error, data) {
+                   data.forEach(function(d) {
+                   d.deathrate = +d.deathrate;
+                   });
                   y.domain(data.map(function(d) { return d.SRA; }));
                   x.domain([0, d3.max(data, function(d) { return d.deathrate; })]);
                   svg.selectAll(".bar")
