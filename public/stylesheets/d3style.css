@@ -35,7 +35,7 @@ x.axis line {
 }
 
 label {
-  position: absolute;
+  position: relative;
   top: 0px;
   left: 10px;
 }
