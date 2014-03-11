@@ -402,13 +402,13 @@ block content
                     .attr("id", function(d,i){return "s"+i;})
                     .each(function() { this._current = {startAngle: 0, endAngle: 0}; });
 
-                    svg.selectAll("path")
-                    .append("text")
-                    .append("textPath")
-                    .attr("xlink:href",function(d,i){return "#s"+i;})
-                    .text(function(d, i){ 
-                      return groups[i];
-                    })
+                    svg.selectAll("text")
+                      .enter().append("text")
+                      .append("textPath")
+                      .attr("xlink:href",function(d,i){return "#s"+i;})
+                      .text(function(d, i){ 
+                        return groups[i];
+                      })
 
                     dispatch.on("statechange.pie", function(d) {
                     path.data(pie.value(function(g) { return d[g]; })(groups)).transition()
