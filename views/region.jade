@@ -402,7 +402,7 @@ block content
                     svg.append("text")
                       .attr("dy", ".35em")
                       .style("text-anchor", "middle")
-                      .text(function(d) { return d.State; });
+                      .text(function(d) { return x(d.SRA;) });
 
                     dispatch.on("statechange.pie", function(d) {
                     path.data(pie.value(function(g) { return d[g]; })(groups)).transition()
