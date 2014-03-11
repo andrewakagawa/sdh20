@@ -411,7 +411,7 @@ block content
                       else if(i == 2) { return "Asthma";}
                       else if(i == 3) { return "Pulminary Disease";}
                       else(i == 4) { return "Diabedes";}
-                    })
+                    });
 
                     dispatch.on("statechange.pie", function(d) {
                     path.data(pie.value(function(g) { return d[g]; })(groups)).transition()
