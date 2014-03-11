@@ -396,11 +396,11 @@ block content
                     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
                     var path = svg.selectAll("path")
-                    .data(groups)
-                    .enter().append("path")
-                    .style("fill", color)
-                    .attr("id", function(d,i){return "s"+i;})
-                    .each(function() { this._current = {startAngle: 0, endAngle: 0}; });
+                      .data(groups)
+                      .enter().append("path")
+                      .style("fill", color)
+                      .attr("id", function(d,i){return "s"+i;})
+                      .each(function() { this._current = {startAngle: 0, endAngle: 0}; });
 
                     var label = svg.append("g");
 
