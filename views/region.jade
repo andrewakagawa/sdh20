@@ -407,10 +407,10 @@ block content
                     .attr("xlink:href",function(d,i){return "#s"+i;})
                     .text(function(d,i){ 
                       if(i == 0) { return "Heart Disease";}
-                      if(i == 0) { return "Stroke";}
-                      if(i == 0) { return "Asthma";}
-                      if(i == 0) { return "Pulminary Disease";}
-                      if(i == 0) { return "Diabedes";}
+                      if(i == 1) { return "Stroke";}
+                      if(i == 2) { return "Asthma";}
+                      if(i == 3) { return "Pulminary Disease";}
+                      if(i == 4) { return "Diabedes";}
                     })
 
                     dispatch.on("statechange.pie", function(d) {
