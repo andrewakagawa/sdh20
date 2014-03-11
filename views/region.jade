@@ -409,7 +409,7 @@ block content
                       .attr("xlink:href",function(d,i){return "#s"+i;})
                       .text(function(d, i){ 
                         var labels = ["Heart Disease", "Stroke", "Asthma", "Pulminary Disease", "Diabedes"];
-                        return labels[i];
+                        return endAngle[i];
                       })
 
                     dispatch.on("statechange.pie", function(d) {
