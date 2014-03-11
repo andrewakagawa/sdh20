@@ -75,12 +75,12 @@ block content
                     (function() {
                     var dispatch = d3.dispatch("load", "statechange");
                     var groups = [
-                    "heartdisease",
-                    "stroke",
-                    "asthma",
-                    "pulminarydisease",
-                    "diabetes",
-                    "cancer"
+                    "d-heartdisease",
+                    "d-stroke",
+                    "d-asthma",
+                    "d-pulminarydisease",
+                    "d-diabetes",
+                    "d-cancer"
                     ];
                     d3.csv("csv/data.csv", type, function(error, states) {
                     if (error) throw error;
@@ -192,12 +192,11 @@ block content
                     (function() {
                     var dispatch = d3.dispatch("load", "statechange");
                     var groups = [
-                    "deathrate",
-                    "stroke",
-                    "asthma",
-                    "pulminarydisease",
-                    "diabetes",
-                    "cancer"
+                    "h-heartdisease",
+                    "h-stroke",
+                    "h-asthma",
+                    "h-pulminarydisease",
+                    "h-diabetes",
                     ];
                     d3.csv("csv/data.csv", type, function(error, states) {
                     if (error) throw error;
