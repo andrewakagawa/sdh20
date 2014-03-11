@@ -406,12 +406,9 @@ block content
                     .append("textPath")
                     .attr("xlink:href",function(d,i){return "#s"+i;})
                     .text(function(d,i){ 
-                      if(i == 0) { return "Heart Disease";}
-                      else if(i == 1) { return "Stroke";}
-                      else if(i == 2) { return "Asthma";}
-                      else if(i == 3) { return "Pulminary Disease";}
-                      else(i == 4) { return "Diabedes";}
-                    });
+                      var label = ["Heart Disease", "Stroke", "Asthma", "Pulminary Disease", "Diabedes"];
+                      return label[i];
+                    })
 
                     dispatch.on("statechange.pie", function(d) {
                     path.data(pie.value(function(g) { return d[g]; })(groups)).transition()
