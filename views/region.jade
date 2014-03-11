@@ -399,7 +399,7 @@ block content
                     .style("fill", color)
                     .each(function() { this._current = {startAngle: 0, endAngle: 0}; });
                   
-                    var text = svg.select(".labels").selectAll("text")
+                    var text = svg.selectAll("text")
                       .data(groups);
 
                     text.enter()
