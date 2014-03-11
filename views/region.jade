@@ -173,6 +173,9 @@ block content
                       .enter().append("text")
                       .append("textPath")
                       .attr("xlink:href",function(d,i){return "#s"+i;})
+                      .style("font-size", function(d,i){ 
+                        var fontsize=["6px", "8px", "10px", "12px", "14px", "16px"]; 
+                        return fontsize[i];
                       .text(function(d, i){
                         var labels = ["Heart Disease", "Stroke", "Asthma", "Pulminary Disease", "Diabedes", "cancer"];
                         return labels[i];
