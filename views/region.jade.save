@@ -119,19 +119,7 @@ block content
                     .scale(y)
                     .orient("left")
                     .tickFormat(d3.format(".2s"));
-                    var svg = d3.select("#chart_div").append("svg")
-                    .attr("width", width + margin.left + margin.right)
-                    .attr("height", height + margin.top + margin.bottom)
-                    .append("g")
-                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-                    svg.append("g")
-                    .attr("class", "y axis")
-                    .call(yAxis);
-                    var rect = svg.append("rect")
-                    .attr("x", 4)
-                    .attr("width", width - 4)
-                    .attr("y", height)
-                    .attr("height", 0)
+               
                     .style("fill", "#aaa");
                     dispatch.on("statechange.bar", function(d) {
                     rect.transition()
@@ -145,49 +133,24 @@ block content
                     var width = 880,
                     height = 460,
                     radius = Math.min(width, height) / 2;
-
                     var color = d3.scale.ordinal()
-                      .domain(groups)
-                      .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#ff8c00"]);
-                    
-                    var x=d3.scale.linear()
-                     .domain([0, d3.max(stateById.values(), function(d) { return d.total; })])
-                     .range([0, 24]);
- 
+                    .domain(groups)
+                    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#ff8c00"]);
                     var arc = d3.svg.arc()
-                      .outerRadius(radius - 10)
-                      .innerRadius(radius - 70);
+                    .outerRadius(radius - 10)
+                    .innerRadius(radius - 70);
                     var pie = d3.layout.pie()
-                      .sort(null);
-         
-
+                    .sort(null);
                     var svg = d3.select("#chart_div").append("svg")
-                      .attr("width", width)
-                      .attr("height", height)
-                      .append("g")
-                      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
+                    .attr("width", width)
+                    .attr("height", height)
+                    .append("g")
+                    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
                     var path = svg.selectAll("path")
-                      .data(groups)
-                      .enter().append("path")
-                      .style("fill", color)
-                      .attr("id", function(d,i){return "s"+i;})
-                      .each(function() { this._current = {startAngle: 0, endAngle: 0}; });
-
-                    var label = svg.selectAll("text")
-                      .data(groups)
-                      .enter().append("text")
-                      .append("textPath")
-                      .attr("xlink:href",function(d,i){return "#s"+i;})
-                      .style("font-size", function(d,i){ 
-                        var fontsize=["6px", "8px", "10px", "12px", "14px", "16px"]; 
-                        return fontsize[i];
-                      })
-                      .text(function(d, i){
-                        var labels = ["Heart Disease", "Stroke", "Asthma", "Pulminary Disease", "Diabedes", "cancer"];
-                        return x(d);
-                      })
-
+                    .data(groups)
+                    .enter().append("path")
+                    .style("fill", color)
+                    .each(function() { this._current = {startAngle: 0, endAngle: 0}; });
                     dispatch.on("statechange.pie", function(d) {
                     path.data(pie.value(function(g) { return d[g]; })(groups)).transition()
                     .attrTween("d", function(d) {
@@ -297,7 +260,7 @@ block content
                     var pie = d3.layout.pie()
                     .sort(null);
 
-                    var svg = d3.select("#chart_div2").append("svg")
+                    var svg = d3.select("#chart_div3").append("svg")
                       .attr("width", width)
                       .attr("height", height)
                       .append("g")
