@@ -402,8 +402,7 @@ block content
                     .attr("id", function(d,i){return "s"+i;})
                     .each(function() { this._current = {startAngle: 0, endAngle: 0}; });
 
-                    svg.selectAll("text")
-                    .append("text")
+                    svg.append("text")
                     .append("textPath")
                     .attr("xlink:href",function(d,i){return "#s"+i;})
                     .text(function(d, i){ 
