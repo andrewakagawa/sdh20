@@ -395,9 +395,8 @@ block content
                       .append("g")
                       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-                    var path = svg.selectAll("path")
+                    var path = svg.append("path")
                       .data(groups)
-                      .svg.append("path")
                       .style("fill", color)
                       .attr("id", function(d,i){return "s"+i;})
                       .each(function() { this._current = {startAngle: 0, endAngle: 0}; });
