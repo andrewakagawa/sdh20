@@ -392,6 +392,7 @@ block content
                     var svg = d3.select("#chart_div3").append("svg")
                       .attr("width", width)
                       .attr("height", height)
+                      .selectAll("g")
                       .append("g")
                       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
