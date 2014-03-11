@@ -381,19 +381,19 @@ block content
                     height = 460,
                     radius = Math.min(width, height) / 2;
                     var color = d3.scale.ordinal()
-                    .domain(groups)
-                    .range(["#98ABC5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#ff8c00"]);
+                      .domain(groups)
+                      .range(["#98ABC5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#ff8c00"]);
                     var arc = d3.svg.arc()
-                    .outerRadius(radius - 10)
-                    .innerRadius(radius - 70);
+                      .outerRadius(radius - 10)
+                      .innerRadius(radius - 70);
                     var pie = d3.layout.pie()
-                    .sort(null);
+                      .sort(null);
 
                     var svg = d3.select("#chart_div3").append("svg")
-                    .attr("width", width)
-                    .attr("height", height)
-                    .append("g")
-                    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+                      .attr("width", width)
+                      .attr("height", height)
+                      .append("g")
+                      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
                     var path = svg.selectAll("path")
                       .data(groups)
@@ -411,13 +411,13 @@ block content
                       })
 
                     dispatch.on("statechange.pie", function(d) {
-                    path.data(pie.value(function(g) { return d[g]; })(groups)).transition()
-                    .attrTween("d", function(d) {
-                    var interpolate = d3.interpolate(this._current, d);
-                    this._current = interpolate(0);
-                    return function(t) {
-                    return arc(interpolate(t));
-                    };
+                      path.data(pie.value(function(g) { return d[g]; })(groups)).transition()
+                        .attrTween("d", function(d) {
+                      var interpolate = d3.interpolate(this._current, d);
+                      this._current = interpolate(0);
+                      return function(t) {
+                        return arc(interpolate(t));
+                      };
                     });
                     });
                     });
