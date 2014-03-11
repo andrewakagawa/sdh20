@@ -406,8 +406,8 @@ block content
                       .append("text")
                       .attr("dy", ".35em")
                       .append("textPath")
-                      .text(function(d) {
-                        return groups;
+                      .attr("xlink:href", function (d,i) { return "#path_" + i; })
+                      .text(function (d,i) { return "path_" + i; });
                       });
 
                     dispatch.on("statechange.pie", function(d) {
