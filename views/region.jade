@@ -405,8 +405,8 @@ block content
                     svg.selectAll("text").append("text")
                     .append("textPath")
                     .attr("xlink:href",function(d,i){return "#s"+i;})
-                    .text(function(d){ 
-                      return "test";
+                    .text(function(d, i){ 
+                      return groups[i];
                     })
 
                     dispatch.on("statechange.pie", function(d) {
