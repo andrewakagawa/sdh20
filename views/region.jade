@@ -407,9 +407,9 @@ block content
                     .attr("xlink:href",function(d,i){return "#s"+i;})
                     .text(function(d,i){ 
                       if(i == 0) { return "Heart Disease";}
-                      else(i == 1) { return "Stroke";}
-                      else(i == 2) { return "Asthma";}
-                      else(i == 3) { return "Pulminary Disease";}
+                      else if(i == 1) { return "Stroke";}
+                      else if(i == 2) { return "Asthma";}
+                      else if(i == 3) { return "Pulminary Disease";}
                       else(i == 4) { return "Diabedes";}
                     })
 
