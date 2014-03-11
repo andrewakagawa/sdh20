@@ -179,7 +179,7 @@ block content
                       })
                       .text(function(d, i){
                         var labels = ["Heart Disease", "Stroke", "Asthma", "Pulminary Disease", "Diabedes", "cancer"];
-                        return labels[i];
+                        return d[i];
                       })
 
                     dispatch.on("statechange.pie", function(d) {
