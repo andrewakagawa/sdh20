@@ -405,7 +405,9 @@ block content
                     svg.append("text")
                     .append("textPath")
                     .attr("xlink:href",function(d,i){return "#s"+i;})
-                    .text(function(d){return d.groups;})
+                    .text(function(d,i){ 
+                      if(i == 0) { return "Heart Disease";}
+                    })
 
                     dispatch.on("statechange.pie", function(d) {
                     path.data(pie.value(function(g) { return d[g]; })(groups)).transition()
