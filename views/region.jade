@@ -406,8 +406,7 @@ block content
                     .append("textPath")
                     .attr("xlink:href",function(d,i){return "#s"+i;})
                     .text(function(d,i){ 
-                      var label = ["Heart Disease", "Stroke", "Asthma", "Pulminary Disease", "Diabedes"];
-                      return label[i];
+                      return "test";
                     })
 
                     dispatch.on("statechange.pie", function(d) {
