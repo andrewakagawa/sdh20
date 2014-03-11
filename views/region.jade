@@ -399,6 +399,7 @@ block content
                     .data(groups)
                     .enter().append("path")
                     .style("fill", color)
+                    .attr("id", function(d,i){return "s"+i;})
                     .each(function() { this._current = {startAngle: 0, endAngle: 0}; });
 
                     svg.append("text")
