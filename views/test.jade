@@ -64,7 +64,7 @@ block content
                     .data(data)
                     .enter().append("rect")
                     .attr("class", "bar")
-                    .attr("y", function(d) { return y; })
+                    .attr("y", function(d) { return y(d.SRA); })
                     .attr("height", y.rangeBand())
                     .attr("width", function(d) { return x(d.deathrate); });
 
@@ -75,6 +75,7 @@ block content
                     .style("text-anchor", "start")
                     .style("font", "24px")
                     .attr("dy", "5px");
+                    .text( function(d) { return x(d.deathrate); });
       
                   svg.append("g")
                     .attr("class", "x axis")
