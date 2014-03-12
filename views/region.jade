@@ -136,7 +136,7 @@ block content
                       .call(yAxis);
                     
                     var label = svg.append("text")
-                      .text("test");
+                      .text(function(d) { return y(d.total); });
 
                     var rect = svg.append("rect")
                       .attr("x", 4)
