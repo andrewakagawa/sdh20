@@ -135,9 +135,6 @@ block content
                       .attr("class", "y axis")
                       .call(yAxis);
                     
-                    var label = svg.append("text")
-                      .text(function(d) { return d.total; });
-
                     var rect = svg.append("rect")
                       .attr("x", 4)
                       .attr("width", width - 4)
@@ -162,17 +159,12 @@ block content
                       .domain(groups)
                       .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#ff8c00"]);
                     
-                    var x=d3.scale.linear()
-                     .domain([0, d3.max(stateById.values(), function(d) { return d.total; })])
-                     .range([0, 24]);
- 
                     var arc = d3.svg.arc()
                       .outerRadius(radius - 10)
                       .innerRadius(radius - 70);
                     var pie = d3.layout.pie()
                       .sort(null);
          
-
                     var svg = d3.select("#chart_div").append("svg")
                       .attr("width", width)
                       .attr("height", height)
@@ -191,13 +183,9 @@ block content
                       .enter().append("text")
                       .append("textPath")
                       .attr("xlink:href",function(d,i){return "#s"+i;})
-                      .style("font-size", function(d,i){ 
-                        var fontsize=["6px", "8px", "10px", "12px", "14px", "16px"]; 
-                        return fontsize[i];
-                      })
                       .text(function(d, i){
                         var labels = ["Heart Disease", "Stroke", "Asthma", "Pulminary Disease", "Diabedes", "cancer"];
-                        return d.load;
+                        return labels[i];
                       })
 
                     dispatch.on("statechange.pie", function(d) {
