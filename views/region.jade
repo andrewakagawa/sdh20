@@ -10,52 +10,34 @@ block content
       .row-fluid
         .span8
           iframe(width='800', height='450', frameborder='0', scrolling='no', marginheight='0', marginwidth='0', src='http://dianaeg2014.maps.arcgis.com/home/webmap/templates/OnePane/basicviewer/embed.html?webmap=943a54276f964eb5abd3a92cf8af50c2&gcsextent=-117.4808,32.4762,-116.6376,32.8421&displayslider=true&displayscalebar=true&displaylegend=true&displaydetails=true&displaybasemaps=true')
-        .span4.actions
-          .span9.actions.offset1
+
+        .row-fluid
+          .span12
             .span10.offset1
-              .statistics
-                #this-carousel-id.carousel.slide
+              h2 How #{title} stacks up
+              ul.nav.nav-tabs
+                li
+                  a(href='#item7', data-toggle='tab') Deaths
+                li
+                  a(href='#item8', data-toggle='tab') Hospitalizations
+                li
+                  a(href='#item9', data-toggle='tab') Emergency
+              .tab-content
+                #item7.tab-pane.active
                   //
-                     class of slide for animation 
-                  .carousel-inner
-                    .item.active
-                      //
-                         class of active since it's the first item 
-                      .carousel-caption
-                        .span13
-                          h2 Overall Score Card
-                        .span13
-                          //
-                             linediv-l and linediv-r give dividing lines that look
-                                            different in horizontal and vertical layouts, illustrating
-                                            media queries. 
-                          h3 Deaths
-                          p 40 of 42
-                        .span13
-                          h3 Hospitalizations
-                          p 41 of 42
-                        .span13n
-                          h3 Emergency Room Visits
-                          p 42 of 42
-                    .item
-                      .carousel-caption
-                        h3 Health Score Card
-                        p 40 of 42 Excercise at home (25.6%)
-                        p 36 of 42 Presently controlling diet (36.2%)
-                        p 36 of 42 Current Smokers (11.0%)
-                        p 14 of 42 Overweight/Obese (65.6%)
-                        p 22 of 42 Ate Fast Food 3+ Times per Week (18.9%)
-                        p 35 of 42 Eats 5+ Servings of Fruits & Vegetables - Ages 2-11 (49.5%)
-                        p 16 of 42 Physically Active 5+ Days for at least 1 Hour - Ages 5-11 (42.0%)
+                    Div that will hold the chart
+                  #chart_div7(style='width: 480px; height: 300px;')
+                #item8.tab-pane
                   //
-                     /.carousel-inner 
+                    Div that will hold the chart
+                  #chart_div8(style='width: 480px; height: 300px;')
+                #item9.tab-pane
                   //
-                      Next and Previous controls below
-                            href values must reference the id for this carousel 
-                  a.carousel-control.left(href='#this-carousel-id', data-slide='prev') ‹
-                  a.carousel-control.right(href='#this-carousel-id', data-slide='next') ›
-                //
-                   /.carousel 
+                    Div that will hold the chart
+                  #chart_div9(style='width: 480px; height: 300px;')
+        p.caption
+          | COPD = Chronic obstructive pulmonary disease, which includes chronic bronchitis and emphysema.
+
         .row-fluid
           .span10.offset1
             h2 What's making #{title} unhealthy
