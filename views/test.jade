@@ -61,6 +61,26 @@ block content
                        x.domain(data.map(function(d) { return d.SRA; }));
                        y.domain([0, d3.max(data, function(d) { return d.deathrate; })]);
 
+                       svg.append("g")
+                         .attr("class", "x axis")
+                         .attr("transform", "translate("-12"," + height + ")")
+                         .call(xAxis)
+                         .selectAll("text")
+                         .style("text-anchor", "start")
+                         .attr("transform", function(d) {
+                           return "rotate(-90)"})
+                         .attr("dx", "5px");                         
+
+                       svg.append("g")
+                           .attr("class", "y axis")
+                           .call(yAxis)
+                         .append("text")
+                           .attr("transform", "rotate(-90)")
+                           .attr("y", 6)
+                           .attr("dy", "71em")
+                           .style("text-anchor", "end")
+                           .text("in thousands");
+
                        svg.selectAll(".bar")
                          .data(data)
                          .enter().append("rect")
@@ -69,27 +89,6 @@ block content
                          .attr("width", x.rangeBand())
                          .attr("y", function(d) { return y(d.deathrate); })
                          .attr("height", function(d) { return height - y(d.deathrate); });
-
-                       svg.append("g")
-                         .attr("class", "x axis")
-                         .attr("transform", "translate(0," + height + ")")
-                         .call(xAxis)
-                         .selectAll("text")
-                         .style("text-anchor", "start")
-                         .attr("transform", function(d) {
-                           return "rotate(-90)"})
-                         .attr("dy", "20px")
-                         .attr("dx", "5px");                         
-
-                       svg.append("g")
-                         .attr("class", "y axis")
-                         .call(yAxis)
-                         .append("text")
-                         .attr("transform", "rotate(-90)")
-                         .attr("y", 6)
-                         .attr("dy", "71em")
-                         .style("text-anchor", "end")
-                         .text("in thousands");
 
                        d3.select("input").on("change", change);
 
