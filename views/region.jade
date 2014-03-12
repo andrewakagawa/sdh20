@@ -47,7 +47,7 @@ block content
                        .scale(y)
                        .orient("left")
 
-                     var svg = d3.select("#chart_div").append("svg")
+                     var svg = d3.select("#chart_div7").append("svg")
                        .attr("width", width + margin.left + margin.right)
                        .attr("height", height + margin.top + margin.bottom)
                        .append("g")
@@ -146,7 +146,7 @@ block content
                        .scale(y)
                        .orient("left")
 
-                     var svg = d3.select("#chart_div").append("svg")
+                     var svg = d3.select("#chart_div8").append("svg")
                        .attr("width", width + margin.left + margin.right)
                        .attr("height", height + margin.top + margin.bottom)
                        .append("g")
@@ -154,11 +154,11 @@ block content
 
                      d3.csv("csv/data.csv", function(error, data) {
                        data.forEach(function(d) {
-                         d.deathrate = +d.deathrate;
+                           d.hospitalrate = +d.hospitalrate;
                          });
 
                        x.domain(data.map(function(d) { return d.SRA; }));
-                       y.domain([0, d3.max(data, function(d) { return d.deathrate; })]);
+                       y.domain([0, d3.max(data, function(d) { return d.hospitalrate; })]);
 
                        svg.selectAll(".bar")
                          .data(data)
@@ -166,8 +166,8 @@ block content
                          .attr("class", "bar")
                          .attr("x", function(d) { return x(d.SRA); })
                          .attr("width", x.rangeBand())
-                         .attr("y", function(d) { return y(d.deathrate); })
-                         .attr("height", function(d) { return height - y(d.deathrate); });
+                         .attr("y", function(d) { return y(d.hospitalrate); })
+                         .attr("height", function(d) { return height - y(d.hospitalrate); });
 
                        svg.append("g")
                          .attr("class", "x axis")
@@ -200,7 +200,7 @@ block content
 
                          // Copy-on-write since tweens are evaluated after a delay.
                          var x0 = x.domain(data.sort(this.checked
-                           ? function(a, b) { return b.deathrate - a.deathrate; }
+                           ? function(a, b) { return b.hospitalrate - a.hospitalrate; }
                            : function(a, b) { return d3.ascending(a.SRA, b.SRA); })
                            .map(function(d) { return d.SRA; }))
                            .copy();
@@ -253,11 +253,11 @@ block content
 
                      d3.csv("csv/data.csv", function(error, data) {
                        data.forEach(function(d) {
-                         d.hospitalrate = +d.hospitalrate;
+                         d.edrate = +d.edrate;
                          });
 
                        x.domain(data.map(function(d) { return d.SRA; }));
-                       y.domain([0, d3.max(data, function(d) { return d.hospitalrate; })]);
+                       y.domain([0, d3.max(data, function(d) { return d.edrate; })]);
 
                        svg.selectAll(".bar")
                          .data(data)
@@ -265,8 +265,8 @@ block content
                          .attr("class", "bar")
                          .attr("x", function(d) { return x(d.SRA); })
                          .attr("width", x.rangeBand())
-                         .attr("y", function(d) { return y(d.hospitalrate); })
-                         .attr("height", function(d) { return height - y(d.hospitalrate); });
+                         .attr("y", function(d) { return y(d.edrate); })
+                         .attr("height", function(d) { return height - y(d.edrate); });
 
                        svg.append("g")
                          .attr("class", "x axis")
@@ -299,7 +299,7 @@ block content
 
                          // Copy-on-write since tweens are evaluated after a delay.
                          var x0 = x.domain(data.sort(this.checked
-                           ? function(a, b) { return b.hospitalrate - a.hospitalrate; }
+                           ? function(a, b) { return b.edrate - a.edrate; }
                            : function(a, b) { return d3.ascending(a.SRA, b.SRA); })
                            .map(function(d) { return d.SRA; }))
                            .copy();
