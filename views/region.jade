@@ -28,7 +28,7 @@ block content
                     Div that will hold the chart
                   #chart_div7
                     label
-                      input(type='checkbox')
+                      input(type='checkbox' value='a')
                       | Sort values
 
                     script.
@@ -94,7 +94,7 @@ block content
                          .style("text-anchor", "end")
                          .text("in thousands");
 
-                       d3.select("input").on("change", change);
+                       d3.select("input[value=\"a\"]").on("change", change);
 
                        var sortTimeout = setTimeout(function() {
                          d3.select("input").property("checked", true).each(change);
@@ -132,7 +132,7 @@ block content
                     Div that will hold the chart
                   #chart_div8
                     label
-                      input(type='checkbox')
+                      input(type='checkbox' value='b')
                       | Sort values
 
                     script.
@@ -201,7 +201,7 @@ block content
                        d3.select("input").on("change", change);
 
                        var sortTimeout = setTimeout(function() {
-                         d3.select("input").property("checked", true).each(change);
+                         d3.select("input[value=\"b\"]").property("checked", true).each(change);
                        }, 2000);
 
                        function change() {
@@ -235,7 +235,7 @@ block content
                  Div that will hold the chart
                  #chart_div9
                    label
-                      input(type='checkbox')
+                      input(type='checkbox' value='c')
                       | Sort values
 
                    script.
@@ -304,7 +304,7 @@ block content
                        d3.select("input").on("change", change);
 
                        var sortTimeout = setTimeout(function() {
-                         d3.select("input").property("checked", true).each(change);
+                         d3.select("input[value=\"c\"]").property("checked", true).each(change);
                        }, 2000);
 
                        function change() {
