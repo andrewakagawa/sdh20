@@ -72,14 +72,13 @@ block content
 
                        svg.append("g")
                          .attr("class", "x axis")
-                         .attr("transform", "translate(0," + height + ")")
+                         .attr("transform", "translate(0,0)")
                          .call(xAxis)
                          .selectAll("text")
                          .style("text-anchor", "start")
                          .attr("transform", function(d) {
                            return "rotate(-90)"})
-                         .attr("dx", "5px")
-                         .attr("dy", "0px");                         
+                         .attr("dx", "5px");                         
 
                        svg.append("g")
                          .attr("class", "y axis")
