@@ -28,7 +28,7 @@ block content
                   | Sort values
 
                 script.
-                  (function() {
+                  
                      var margin = {top: 20, right: 20, bottom: 30, left: 40},
                      width = 1170 - margin.left - margin.right,
                      height = 600 - margin.top - margin.bottom;
@@ -45,7 +45,7 @@ block content
 
                      var yAxis = d3.svg.axis()
                        .scale(y)
-                       .orient("left");
+                       .orient("left")
 
                      var svg = d3.select("#chart_div").append("svg")
                        .attr("width", width + margin.left + margin.right)
@@ -121,7 +121,7 @@ block content
                            .delay(delay);
                          }
                      });
-                  }());
+                  
 
 
 
