@@ -76,11 +76,10 @@ block content
                          .call(xAxis)
                          .selectAll("text")
                          .style("text-anchor", "start")
-                         .style("font", "24px")
                          .attr("transform", function(d) {
                            return "rotate(-90)"})
                          .attr("dx", "5px");
-                         
+                         .attr("dy", "0px");                         
 
                        svg.append("g")
                          .attr("class", "y axis")
@@ -88,7 +87,7 @@ block content
                          .append("text")
                          .attr("transform", "rotate(-90)")
                          .attr("y", 6)
-                         .attr("dy", "0px")
+                         .attr("dy", "71em")
                          .style("text-anchor", "end")
                          .text("in thousands");
 
