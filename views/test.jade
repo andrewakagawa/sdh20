@@ -61,6 +61,16 @@ block content
                        x.domain(data.map(function(d) { return d.SRA; }));
                        y.domain([0, d3.max(data, function(d) { return d.deathrate; })]);
 
+                       svg.selectAll(".bar")
+                         .data(data)
+                         .enter().append("rect")
+                         .attr("class", "bar")
+                         .attr("x", function(d) { return x(d.SRA); })
+                         .attr("width", x.rangeBand())
+                         .attr("y", function(d) { return y(d.deathrate); })
+                         .attr("height", function(d) { return height - y(d.deathrate); });
+
+
                        svg.append("g")
                          .attr("class", "x axis")
                          .attr("transform", "translate("-12"," + height + ")")
@@ -81,15 +91,6 @@ block content
                          .style("text-anchor", "end")
                          .text("in thousands");
 
-
-                       svg.selectAll(".bar")
-                         .data(data)
-                         .enter().append("rect")
-                         .attr("class", "bar")
-                         .attr("x", function(d) { return x(d.SRA); })
-                         .attr("width", x.rangeBand())
-                         .attr("y", function(d) { return y(d.deathrate); })
-                         .attr("height", function(d) { return height - y(d.deathrate); });
 
                        d3.select("input").on("change", change);
 
