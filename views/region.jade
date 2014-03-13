@@ -32,7 +32,7 @@ block content
                       | Sort values
 
                     script.
-                     (function() {
+                     (function () {
                      var margin = {top: 20, right: 20, bottom: 30, left: 40},
                      width = 1170 - margin.left - margin.right,
                      height = 600 - margin.top - margin.bottom;
@@ -132,11 +132,11 @@ block content
                     Div that will hold the chart
                   #chart_div8
                     label
-                      input(type='checkbox' value='b')
+                      input(type='checkbox' value='b' onclick='loadB()')
                       | Sort values
 
                     script.
-                     (function() {
+                     (function loadB() {
                      var margin = {top: 20, right: 20, bottom: 30, left: 40},
                      width = 1170 - margin.left - margin.right,
                      height = 600 - margin.top - margin.bottom;
