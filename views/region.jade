@@ -815,13 +815,12 @@ block content
                      d.date = parseDate(d.date);
                      });
 
-                     var name = "Hlamesa";
 
                      var cities = color.domain().map(function(name) {
                      return {
                      name: name,
                      values: data.map(function(d) {
-                     return {date: d.date, temperature: +d[name]};
+                     return {date: d.date, temperature: d.Hlamesa};
                      })
                      };
                      });
