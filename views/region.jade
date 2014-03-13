@@ -818,10 +818,16 @@ block content
 
                      var cities = color.domain().map(function(name) {
                      return {
-                     name: name,
+                     name: "Heart Disease",
                      values: data.map(function(d) {
                      return {date: d.date, temperature: d.Hlamesa};
                      })
+
+                     name: "Stroke",
+                     values: data.map(function(d) {
+                     return {date: d.date, temperature: d.Slamesa};
+                     })
+
                      };
                      });
 
