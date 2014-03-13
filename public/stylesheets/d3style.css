@@ -8,6 +8,12 @@
   fill:none;
 }
 
+path.line
+{
+    fill: none;
+    stroke: #000;
+}
+
 .axis path{
   fill: none;
   stroke: #000;
