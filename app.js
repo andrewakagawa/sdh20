@@ -93,7 +93,7 @@ var region = [
     { name: 'university', title : 'University'},
     { name: 'valley', title : 'ValleyCenter'},
     { name: 'vista', title : 'Vista'},
-    { name: "sandiegocounty", title: 'SDCO'}
+    { name: "SDCO", title: 'San Diego County'}
 ];
 
 function loadRegion(req, res, next) {
