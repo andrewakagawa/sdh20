@@ -42,12 +42,6 @@ app.get('/region', function(req, res){
   });
 });
 
-app.get('/SDCO', function(req, res){
-  res.render('SDCO', {
-    title: 'San Diego County'
-  });
-});
-
 
 app.get('/test', function(req, res){
   res.render('test', {
