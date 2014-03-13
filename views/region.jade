@@ -817,7 +817,7 @@ block content
 
                      var cities = color.domain().map(function(name) {
                      return {
-                     name: name,
+                     name: "dchulavista",
                      values: data.map(function(d) {
                      return {date: d.date, temperature: +d[name]};
                      })
@@ -843,7 +843,7 @@ block content
                      .attr("y", 6)
                      .attr("dy", ".71em")
                      .style("text-anchor", "end")
-                     .text("Temperature (ºF)");
+                     .text("Trend");
 
                      var city = svg.selectAll(".city")
                      .data(cities)
