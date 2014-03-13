@@ -11,6 +11,10 @@
   shape-rendering: crispEdges;
 }
 
+.x.axis path {
+  display: none;
+}
+
 y.axis line {
   fill: none;
   stroke: #000;
