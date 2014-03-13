@@ -97,7 +97,7 @@ block content
                        d3.select("input[value=\"a\"]").on("change", change);
 
                        var sortTimeout = setTimeout(function() {
-                         d3.select("input").property("checked", true).each(change);
+                         d3.select("input[value=\"a\"]").property("checked", true).each(change);
                        }, 2000);
 
                        function change() {
@@ -198,7 +198,7 @@ block content
                          .style("text-anchor", "end")
                          .text("in thousands");
 
-                       d3.select("input").on("change", change);
+                       d3.select("input[value=\"b\"]").on("change", change);
 
                        var sortTimeout = setTimeout(function() {
                          d3.select("input[value=\"b\"]").property("checked", true).each(change);
@@ -301,7 +301,7 @@ block content
                          .style("text-anchor", "end")
                          .text("in thousands");
 
-                       d3.select("input").on("change", change);
+                       d3.select("input[value=\"c\"]").on("change", change);
 
                        var sortTimeout = setTimeout(function() {
                          d3.select("input[value=\"c\"]").property("checked", true).each(change);
