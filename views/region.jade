@@ -799,9 +799,8 @@ block content
                      .orient("left");
 
                      var line = d3.svg.line()
-                     .interpolate("basis")
                      .x(function(d) { return x(d.date); })
-                     .y(function(d) { return y(d.temperature); });
+                     .y(function(d) { return y(d.Dlamesa); });
 
                      var svg = d3.select("#chart_div4").append("svg")
                      .attr("width", width + margin.left + margin.right)
@@ -813,21 +812,24 @@ block content
                      color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
                      data.forEach(function(d) {
                      d.date = parseDate(d.date);
+                     d.Diabedes = +d.Dlamesa
                      });
 
 
-                     var cities[0] = color.domain().map(function(name) {
+                     var cities = color.domain().map(function(name) {
                        return {
-                           name: "Heart Disease",  values: data.map(function(d) {return {date: d.date, temperature: d.Hlamesa};})
+                         name: name,
+                         values: data.map(function(d) {
+                           return {date: d.date, temperature: +d[name]};
+                         })
                        };
                      });
 
 
-
                      x.domain(d3.extent(data, function(d) { return d.date; }));
                      y.domain([
-                     d3.min(cities, function(c) { return d3.min(c.values, function(v) { return v.temperature; }); }),
-                     d3.max(cities, function(c) { return d3.max(c.values, function(v) { return v.temperature; }); })
+                     d3.min(cities, function(c) { return d3.min(d.Dlamesa);}),
+                     d3.max(cities, function(c) { return d3.max(d.Dlamesa);})
                      ]);
 
                      svg.append("g")
