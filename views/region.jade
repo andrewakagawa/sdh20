@@ -817,9 +817,11 @@ block content
 
 
                      var cities = color.domain().map(function(name) {
-                     return {
-                     name: "Heart Disease",  values: data.map(function(d) {return {date: d.date, temperature: d.Hlamesa};})
-                     };
+                       return {
+                         [
+                           {name: "Heart Disease",  values: data.map(function(d) {return {date: d.date, temperature: d.Hlamesa};})}
+                         ]
+                       };
                      });
 
                      x.domain(d3.extent(data, function(d) { return d.date; }));
