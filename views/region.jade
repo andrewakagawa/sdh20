@@ -138,7 +138,7 @@ block content
                     script.
                      (loadB = function() {
                      var margin = {top: 20, right: 20, bottom: 30, left: 40},
-                     width = 1170 - margin.left - margin.right,
+                     width = 971 - margin.left - margin.right,
                      height = 600 - margin.top - margin.bottom;
 
                      var x = d3.scale.ordinal()
@@ -241,7 +241,7 @@ block content
                     script.
                      (function() {
                      var margin = {top: 20, right: 20, bottom: 30, left: 40},
-                     width = 1170 - margin.left - margin.right,
+                     width = 971 - margin.left - margin.right,
                      height = 600 - margin.top - margin.bottom;
 
                      var x = d3.scale.ordinal()
@@ -820,7 +820,7 @@ block content
                      return {
                      name: "Heart Disease",
                      values: data.map(function(d) {
-                     return {date: d.date, temperature: d.Hlamesa};
+                     return {date: d.date, temperature: [d.Hlamesa, h.lamesa]};
                      })
                      };
                      });
