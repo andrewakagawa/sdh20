@@ -825,7 +825,13 @@ block content
                      d3.csv("csv/dtrend.csv", function(error, data) {
                      data.forEach(function(d) {
                      d.date = parseDate(d.date);
-                     d.Diabedes = +d.Dlamesa
+ 
+                     d.Heartdisease = +d.Hlamesa;
+                     d.Stroke = +d.Slamesa;
+                     d.Asthma = +d.Alamesa;
+                     d.Pulminary = +d.Plamesa;
+                     d.Diabedes = +d.Dlamesa;
+
                      });
 
 
