@@ -828,11 +828,12 @@ block content
                      });
 
 
-
                      x.domain(d3.extent(data, function(d) { return d.date; }));
-                     //y.domain(d3.extent(data, function(d) { return d.Dlamesa; }));
-                     y.domain([0, d3.max(data, function(d) { return Math.max(d.Hlamesa, d.Slamesa, d.Alamesa, d.Plamesa, d.Dlamesa); })]);
 
+                     y.domain([
+                     d3.min(cities, function(c) { return d3.min(c.values, function(v) { return v.temperature; }); }),
+                     d3.max(cities, function(c) { return d3.max(c.values, function(v) { return v.temperature; }); })
+                     ]);
 
                      svg.append("g")
                      .attr("class", "x axis")
