@@ -852,6 +852,7 @@ block content
                       var city = svg.selectAll(".city")
                           .data(cities)
                         .enter().append("g")
+                        .filter (function(d) {return d.Dlamesa})
                           .attr("class", "city");
 
                       city.append("path")
