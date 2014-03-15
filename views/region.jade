@@ -855,23 +855,27 @@ block content
 
                      svg.append("path")
                      .attr("class", "line")
+                     .style("stroke", "red")
                      .attr("d", Hline(data))
 
                      svg.append("path")
                      .attr("class", "line")
+                     .style("stroke", "orange")
                      .attr("d", Sline(data))
 
                      svg.append("path")
                      .attr("class", "line")
+                     .style("stroke", "yellow")
                      .attr("d", Aline(data))
 
                      svg.append("path")
                      .attr("class", "line")
+                     .style("stroke", "green")
                      .attr("d", Pline(data))
 
                      svg.append("path")
-                     .datum(data)
                      .attr("class", "line")
+                     .style("stroke", "blue")
                      .attr("d", Dline(data))
 
 
