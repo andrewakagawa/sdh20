@@ -836,7 +836,9 @@ block content
 
 
                      x.domain(d3.extent(data, function(d) { return d.date; }));
-                     y.domain(d3.extent(data, function(d) { return d.Dlamesa; }));
+                     //y.domain(d3.extent(data, function(d) { return d.Dlamesa; }));
+                     y.domain([0, d3.max(data, function(d) { return Math.max(d.Hlamesa, d.Slamesa, d.Alamesa, d.Plamesa, d.Dlamesa); })]);
+
 
                      svg.append("g")
                      .attr("class", "x axis")
