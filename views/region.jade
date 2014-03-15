@@ -814,10 +814,12 @@ block content
 
 
                      x.domain(d3.extent(data, function(d) { return d.date; }));
-                     y.domain([
+                     /*y.domain([
                      d3.min(data, function(d) { return d3.min(d.Dlamesa);}),
                      d3.max(data, function(d) { return d3.max(d.Dlamesa);})
-                     ]);
+                     ]);*/
+
+                     y.domain(d3.extent(data, function(d) { return d.Dlamesa; }));
 
                      svg.append("g")
                      .attr("class", "x axis")
