@@ -788,8 +788,6 @@ block content
                      var y = d3.scale.linear()
                      .range([height, 0]);
 
-                     var color = d3.scale.category10();
-
                      var xAxis = d3.svg.axis()
                      .scale(x)
                      .orient("bottom");
@@ -809,7 +807,6 @@ block content
                      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
                      d3.csv("csv/dtrend.csv", function(error, data) {
-                     color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
                      data.forEach(function(d) {
                      d.date = parseDate(d.date);
                      d.Diabedes = +d.Dlamesa
@@ -818,8 +815,8 @@ block content
 
                      x.domain(d3.extent(data, function(d) { return d.date; }));
                      y.domain([
-                     d3.min(cities, function(c) { return d3.min(d.Dlamesa);}),
-                     d3.max(cities, function(c) { return d3.max(d.Dlamesa);})
+                     d3.min(data, function(d) { return d3.min(d.Dlamesa);}),
+                     d3.max(data, function(d) { return d3.max(d.Dlamesa);})
                      ]);
 
                      svg.append("g")
