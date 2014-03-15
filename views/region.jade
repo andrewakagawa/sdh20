@@ -856,27 +856,27 @@ block content
                      svg.append("path")
                      .datum(data)
                      .attr("class", "line")
-                     .attr("d", Hline)
+                     .attr("d", Hline(data))
 
                      svg.append("path")
                      .datum(data)
                      .attr("class", "line")
-                     .attr("d", Sline)
+                     .attr("d", Sline(data))
 
                      svg.append("path")
                      .datum(data)
                      .attr("class", "line")
-                     .attr("d", Aline)
+                     .attr("d", Aline(data))
 
                      svg.append("path")
                      .datum(data)
                      .attr("class", "line")
-                     .attr("d", Pline)
+                     .attr("d", Pline(data))
 
                      svg.append("path")
                      .datum(data)
                      .attr("class", "line")
-                     .attr("d", Dline)
+                     .attr("d", Dline(data))
 
 
                      });
