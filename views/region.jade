@@ -860,9 +860,6 @@ block content
                      .style("stroke", "red")
                      .attr("d", Hline(data))
 
-                     svg.append("text")
-                     .text(  function(d) { return d.Heartdisease; });
-
                      svg.append("path")
                      .attr("class", "line")
                      .style("stroke", "orange")
@@ -883,6 +880,9 @@ block content
                      .style("stroke", "blue")
                      .attr("d", Dline(data))
 
+
+                     svg.append("text")
+                     .text( "hi world")
 
                      });
 
