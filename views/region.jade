@@ -781,7 +781,7 @@ block content
                         width = 960 - margin.left - margin.right,
                         height = 500 - margin.top - margin.bottom;
 
-                    var parseDate = d3.time.format("%Y%m%d").parse;
+                    var parseDate = d3.time.format("%Y").parse;
 
                     var x = d3.time.scale()
                         .range([0, width]);
@@ -810,7 +810,7 @@ block content
                       .append("g")
                         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-                    d3.csv("csv/test.csv", function(error, data) {
+                    d3.csv("csv/dtrend.csv", function(error, data) {
                       color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
 
                       data.forEach(function(d) {
