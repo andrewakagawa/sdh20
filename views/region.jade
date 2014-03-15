@@ -796,7 +796,23 @@ block content
                      .scale(y)
                      .orient("left");
 
-                     var line = d3.svg.line()
+                     var Hline = d3.svg.line()
+                     .x(function(d) { return x(d.date); })
+                     .y(function(d) { return y(d.Hlamesa); });
+
+                     var Sline = d3.svg.line()
+                     .x(function(d) { return x(d.date); })
+                     .y(function(d) { return y(d.Slamesa); });
+
+                     var Aline = d3.svg.line()
+                     .x(function(d) { return x(d.date); })
+                     .y(function(d) { return y(d.Alamesa); });
+
+                     var Pline = d3.svg.line()
+                     .x(function(d) { return x(d.date); })
+                     .y(function(d) { return y(d.Plamesa); });
+
+                     var Dline = d3.svg.line()
                      .x(function(d) { return x(d.date); })
                      .y(function(d) { return y(d.Dlamesa); });
 
@@ -814,11 +830,6 @@ block content
 
 
                      x.domain(d3.extent(data, function(d) { return d.date; }));
-                     /*y.domain([
-                     d3.min(data, function(d) { return d3.min(d.Dlamesa);}),
-                     d3.max(data, function(d) { return d3.max(d.Dlamesa);})
-                     ]);*/
-
                      y.domain(d3.extent(data, function(d) { return d.Dlamesa; }));
 
                      svg.append("g")
@@ -839,7 +850,28 @@ block content
                      svg.append("path")
                      .datum(data)
                      .attr("class", "line")
-                     .attr("d", line)
+                     .attr("d", Hline)
+
+                     svg.append("path")
+                     .datum(data)
+                     .attr("class", "line")
+                     .attr("d", Sline)
+
+                     svg.append("path")
+                     .datum(data)
+                     .attr("class", "line")
+                     .attr("d", Aline)
+
+                     svg.append("path")
+                     .datum(data)
+                     .attr("class", "line")
+                     .attr("d", Pline)
+
+                     svg.append("path")
+                     .datum(data)
+                     .attr("class", "line")
+                     .attr("d", Dline)
+
 
                      });
 
