@@ -860,6 +860,9 @@ block content
                      .style("stroke", "red")
                      .attr("d", Hline(data))
 
+                     svg.append("text")
+                     .attr("transform", function(d) { return "translate(" + d.date) + "," + d.Hlamesa")";})
+
                      svg.append("path")
                      .attr("class", "line")
                      .style("stroke", "orange")
