@@ -822,7 +822,7 @@ block content
                         return {
                           name: name,
                           values: data.map(function(d) {
-                            return {date: d.date, temperature: d+[name]};
+                            return {date: d.date, temperature: +d[name]};
                           })
                         };
                       });
