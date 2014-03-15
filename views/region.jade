@@ -861,7 +861,7 @@ block content
                      .attr("d", Hline(data))
 
                      svg.append("text")
-                     .attr("transform", function(d) { return "translate(" + d.date + "," + d.Hlamesa + ")"; })
+                     .attr("transform", function(d) { return "translate(" + x(d.date) + "," + y(d.Hlamesa) + ")"; })
                      .text("hi world");
 
                      svg.append("path")
