@@ -856,7 +856,7 @@ block content
 
                       city.append("path")
                           .attr("class", "line")
-                          .attr("d", function(d) { return line(d.values.Andrew); })
+                          .attr("d", function(d) { return line(d.values); })
                           .style("stroke", function(d) { return color(d.name); });
 
                       city.append("text")
