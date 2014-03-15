@@ -811,7 +811,7 @@ block content
                         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
                     d3.csv("csv/test.csv", function(error, data) {
-                      color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
+                      color.domain(d3.keys(data[0]).filter(function(key) { return key == "Dlamesa"; }));
 
                       data.forEach(function(d) {
                         d.date = parseDate(d.date);
