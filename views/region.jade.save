@@ -2,6 +2,7 @@ extends layout
 
 block content
     script(src='http://d3js.org/d3.v3.min.js')
+    script(src='http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js')
     script(src='http://code.jquery.com/jquery.js')
     script(src='/lib/bootstrap/bootstrap.min.js')
     include includes/mainmenu.jade
@@ -51,11 +52,19 @@ block content
                        .scale(y)
                        .orient("left")
 
+                     var tip = d3.tip()
+                       .attr('class','d3-tip')
+                       .offset([-10,0])
+                       .html(function(d){
+                          return "<strong>Frequency:</strong>";
+                       })
+
                      var svg = d3.select("#chart_div7").append("svg")
                        .attr("width", width + margin.left + margin.right)
                        .attr("height", height + margin.top + margin.bottom)
                        .append("g")
                        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                     svg.call(tip);
 
                      d3.csv("csv/data.csv", function(error, data) {
                        data.forEach(function(d) {
@@ -73,6 +82,8 @@ block content
                          .attr("width", x.rangeBand())
                          .attr("y", function(d) { return y(d.deathrate); })
                          .attr("height", function(d) { return height - y(d.deathrate); });
+                         .on('mouseover', tip.show)
+                         .on('mouseout', tip.hide)
 
                        svg.append("g")
                          .attr("class", "x axis")

@@ -1,6 +1,6 @@
 SRA,url,deathrate,hospitalrate,edrate,d-heartdisease,d-stroke,d-asthma,d-pulminarydisease,d-diabetes,d-cancer,h-heartdisease,h-stroke,h-asthma,h-pulminarydisease,h-diabetes,e-heartdisease,e-stroke,e-asthma,e-pulminarydisease,e-diabetes
 Alpine,alpine,329.8,719.1,639.9,112.1,46.2,0,33,0,138.5,395.8,270.5,164.9,131.9,217.7,85.8,79.2,184.7,250.7,118.7
-Anza-Borrego Springs,anza-borragosprings,792.8,985.6,728.6,192.8,0,0,0,0,600,428.5,514.2,0.0,128.6,321.4,0.0,171.4,150.0,128.6,128.6
+Anza-Borrego Springs,anza-borregosprings,792.8,985.6,728.6,192.8,0,0,0,0,600,428.5,514.2,0.0,128.6,321.4,0.0,171.4,150.0,128.6,128.6
 Carlsbad,carlsbad,323.7,372.9,280.5,88.9,38,0,32.8,11.2,152.8,265.8,189.0,28.5,67.3,47.5,17.3,44.9,87.2,82.0,37.1
 Central SD,centralsd,305.5,873.7,692.9,94.6,21.7,3,30.7,17.5,138,290.4,217.5,113.9,125.3,183.8,24.1,35.5,433.2,413.9,225.3
 Chula Vista,chulavista,564.2,1324.3,1140.5,190.7,40.5,0,52.6,38,242.4,535.7,345.1,90.6,170.8,253.6,64.7,115.6,647.0,742.8,263.1

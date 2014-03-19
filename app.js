@@ -49,6 +49,12 @@ app.get('/test', function(req, res){
   });
 });
 
+app.get('/region2', function(req, res){
+  res.render('region2', {
+    title: 'D3 test'
+  });
+});
+
 
 //create an array of
 var region = [
@@ -110,7 +116,7 @@ function loadRegion(req, res, next) {
 //routes data
 var sendInfo = function (req, res, next) {
   res.render('region',{
-    title: req.region.title
+    name: req.region.name, title: req.region.title
   });
 }
 

@@ -35,12 +35,12 @@ x.axis line {
 }
 
 .bar {
-  fill: steelblue;
+  fill: #8A89A6;
   fill-opacity: .9;
 }
 
 .bar:hover {
-  fill: brown;
+  fill: orange;
 }
 
 label {
