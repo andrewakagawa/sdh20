@@ -47,3 +47,10 @@ label {
   top: 0px;
   left: 10px;
 }
+
+#tooltip{
+  position: absolute;
+  margin: 240px 400px;
+  width: 250px;
+  font-size: 18px;
+}
