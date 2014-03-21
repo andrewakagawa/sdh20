@@ -1,31 +1,35 @@
+
+
 body {
-         padding-top: 0px;
-         padding-bottom: 40px;
-	 font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-         }
+  padding-top: 0px;
+  padding-bottom: 40px; 
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
 
-	.row-fluid {
-   	 width: 100%;
-	 margin-bottom: 100px;
-	 margin-top: 25px;
-	 }
+.row-fluid {
+  width: 100%;
+  margin-bottom: 100px;
+  margin-top: 25px;
+}
 
-        .heading, .subheading {
-        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
-        text-align: center;
-        }
+.heading, .subheading {
+  font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+  text-align: center;
+}
       
-        .navbar{
-      	min-height:0px !important;
-        font-weight:700;
-      }
+.navbar{
+  min-height:0px !important;
+  font-weight:700;
+}
        
-       .navbar-right {
-        width:auto;
-        padding:1rem 5rem 0 0;
-       }     
+.navbar-right {
+  width:auto;
+  padding:1rem 5rem 0 0;
+}     
 
-.navbar-right li {padding:0 1rem;}
+.navbar-right li {
+  padding:0 1rem;
+}
       	
 .data-tabs-main li {
   margin:1rem;
@@ -38,61 +42,50 @@ img.logo {
   height:50px;
 }
    
-
-.carousel-control.left {
-  left:-30px;
-}   
-
-.carousel-control.right {
-  right:-60px!important;
+.container{
+  min-width: 1200px !important;
+  padding-top: 30px;
 }
-	.container{
-	min-width: 1200px !important;
-	padding-top: 50px;
 
-	}
+.actions {
+  background-color: #666;
+  padding: 3% 0%;
+}
 
-	.actions {
-	background-color: #666;
-	padding: 3% 0%;
-	}
+p.lead {
+  padding-top: 15px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.pitch {
+  padding: 2.5% 0%;
+}
 	
-        p.lead {
-        padding-top: 15px;
-        }
-        p {
-        font-size: 18px;
-        line-height: 24px;
-      }
-
-      .pitch {
-	padding: 2.5% 0%;
-        }
-      
-        .pitch {
-	  padding: 2.5% 0%;
-	}
-	
-	.order {
-	padding: 2% 0%;
-	}
+.order {
+  padding: 2% 0%;
+}
 
 
 .dropdown-menu.multi-column {
-    width: 800px;
+  width: 800px;
 }
 
 .dropdown-menu.multi-column .dropdown-menu {
-    display: block !important;
-    position: static !important;
-    margin: 0 !important;
-    border: none !important;
-    box-shadow: none !important;
+  display: block !important;
+  position: static !important;
+  margin: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
 }
+
 .dropdown-menu:before, 
 .dropdown-menu:after {
-     border: none !important;
-     content: none !important;
+  border: none !important;
+  content: none !important;
 }
 
 .caption {
@@ -156,79 +149,30 @@ h1, h2 {
   margin-top:3rem;
   font-size:3rem;
 }
-      .video, .thermometer, .order, .social {
-        text-align: center;
-      }
-      .video {
-        /* Internal borders have 1px width, thus need to add 4 x 1px to 120px. */
-        line-height: 124px;
-      } 
       
-        div.row {
-          border: 1px solid;
-        }
 
-      .jumbotron {
-  display:block;
-	text-align: center;
-  height:100%;
-  width:100%;
-  margin-right:auto!important;
-  margin-left:auto!important;
-	}
-	.jumbotron h1 {
-	font-size: 100px;
-	line-height: 1;
-	}
-	.jumbotron .lead {
-	font-size: 24px;
-	line-height: 1.25;
-	}
-      .statistics {
-        color: white;
-        min-height:370px;
-      }
+/* Marketing Copy and Footer */
+.copy {
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  text-align: justify;
+}
 
-       /* Marketing Copy and Footer */
-      .copy {
-        padding-top: 2.5%;
-        padding-bottom: 2.5%;
-        text-align: justify;
-      }
-      .asset {
-        padding: 2.5% 0%;
-      }
-      .footer {
-        color: #cccccc;
-        text-align: center;
-      }
-      .footer p {
-        font-size: 11px;
-      }
-      .footer a {
-        color: #ccccff;
-      }
+.asset {
+  padding: 2.5% 0%;
+}
+
+.footer {
+  color: #cccccc;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 11px;
+}
+
+.footer a {
+  color: #ccccff;
+}
       
       
-     .main-pareto {
-     }
-     
-     .tab-content{
-     }
-
-     
-     .carousel-caption {
-  position: relative !important;
-  left: inherit !important;
-  right: inherit !important;
-  bottom: inherit !important;
-  z-index: 10;
-  padding-top: inherit !important;
-  padding-bottom: inherit !important;
-  }
-
-     .carousel-control{
-      background:none !important;
-      
-     }
-
