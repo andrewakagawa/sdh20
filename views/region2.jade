@@ -799,7 +799,7 @@ block content
 
                      var Hline = d3.svg.line()
                      .x(function(d) { return x(d.date); })
-                     .y(function(d) { return y(d.(!{JSON.stringify("H"+ name)}) ); });
+                     .y(function(d) { return y(d.({JSON.stringify("H"+ name)}) ); });
 
                      var Sline = d3.svg.line()
                      .x(function(d) { return x(d.date); })

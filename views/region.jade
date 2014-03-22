@@ -889,197 +889,338 @@ block content
                   //
                     Div that will hold the chart
                   #chart_div4
+                    script.
+                      (function() {
+                      var margin = {top: 20, right: 200, bottom: 30, left: 50},
+                        width = 960 - margin.left - margin.right,
+                        height = 500 - margin.top - margin.bottom;
 
-                script.
-                  (function() {
+                      var parseDate = d3.time.format("%Y").parse;
 
-                     var margin = {top: 20, right: 80, bottom: 30, left: 50},
-                     width = 960 - margin.left - margin.right,
-                     height = 500 - margin.top - margin.bottom;
-                     var parseDate = d3.time.format("%Y").parse;
+                      var x = d3.time.scale()
+                        .range([0, width]);
 
-                     var x = d3.time.scale()
-                     .range([0, width]);
+                      var y = d3.scale.linear()
+                        .range([height, 0]);
 
-                     var y = d3.scale.linear()
-                     .range([height, 0]);
+                      var color = d3.scale.category10();
 
-                     var xAxis = d3.svg.axis()
-                     .scale(x)
-                     .orient("bottom");
+                      var xAxis = d3.svg.axis()
+                        .scale(x)
+                        .orient("bottom")
+                        .tickFormat(d3.time.format("%b%y"));
 
-                     var yAxis = d3.svg.axis()
-                     .scale(y)
-                     .orient("left");
+                      var yAxis = d3.svg.axis()
+                        .scale(y)
+                        .orient("left");
 
-                     var Hline = d3.svg.line()
-                     .x(function(d) { return x(d.date); })
-                     .y(function(d) { return y(d.(!{JSON.stringify("H"+ name)}) ); });
+                      var line = d3.svg.line()
+                        .interpolate("basis")
+                        .x(function(d) { return x(d.date); })
+                        .y(function(d) { return y(d.rate); });
 
-                     var Sline = d3.svg.line()
-                     .x(function(d) { return x(d.date); })
-                     .y(function(d) { return y(d.Slamesa); });
+                      var svg = d3.select("#chart_div4").append("svg")
+                        .attr("width", width + margin.left + margin.right)
+                        .attr("height", height + margin.top + margin.bottom)
+                       .append("g")
+                        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-                     var Aline = d3.svg.line()
-                     .x(function(d) { return x(d.date); })
-                     .y(function(d) { return y(d.Alamesa); });
+                      var region =!{JSON.stringify(name)}
 
-                     var Pline = d3.svg.line()
-                     .x(function(d) { return x(d.date); })
-                     .y(function(d) { return y(d.Plamesa); });
+                      d3.csv("csv/dtrend.csv", function(error, data) {
+                        color.domain(d3.keys(data[0]).filter(function(key) { 
+                        return key == "H" + region || key == "S" + region || key == "A" + region || key == "P" + region || key == "D" + region; 
+                        }));
 
-                     var Dline = d3.svg.line()
-                     .x(function(d) { return x(d.date); })
-                     .y(function(d) { return y(d.Dlamesa); });
+                        data.forEach(function(d) {
+                          d.date = parseDate(d.date);
+                        });
 
-                     var svg = d3.select("#chart_div4").append("svg")
-                     .attr("width", width + margin.left + margin.right)
-                     .attr("height", height + margin.top + margin.bottom)
-                     .append("g")
-                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                        var cities = color.domain().map(function(name) {
+                          return {
+                            name: name,
+                            values: data.map(function(d) {
+                            return {date: d.date, rate: +d[name]};
+                          })
+                        };
+                        });
 
-                     d3.csv("csv/dtrend.csv", function(error, data) {
-                     data.forEach(function(d) {
-                     d.date = parseDate(d.date);
+                        x.domain(d3.extent(data, function(d) { return d.date; }));
 
-                     d.Heartdisease = +d.Hlamesa;
-                     d.Stroke = +d.Slamesa;
-                     d.Asthma = +d.Alamesa;
-                     d.Pulminary = +d.Plamesa;
-                     d.Diabedes = +d.Dlamesa;
+                        y.domain([
+                          d3.min(cities, function(c) { return d3.min(c.values, function(v) { return v.rate; }); }),
+                          d3.max(cities, function(c) { return d3.max(c.values, function(v) { return v.rate; }); })
+                        ]);
 
-                     });
+                        svg.append("g")
+                          .attr("class", "x axis")
+                          .attr("transform", "translate(0," + height + ")")
+                          .call(xAxis);
 
+                        svg.append("g")
+                          .attr("class", "y axis")
+                         .call(yAxis)
+                        .append("text")
+                          .attr("transform", "rotate(-90)")
+                          .attr("y", 6)
+                          .attr("dy", ".71em")
+                          .style("text-anchor", "end")
+                          .text("Rate (per 100,000 of population)");
 
-                     x.domain(d3.extent(data, function(d) { return d.date; }));
-                     y.domain([0, d3.max(data, function(d) { return Math.max(d.Hlamesa, d.Slamesa, d.Alamesa, d.Plamesa, d.Dlamesa); })]);
+                        var city = svg.selectAll(".city")
+                          .data(cities)
+                        .enter().append("g")
+                          .attr("class", "city");
 
+                        city.append("path")
+                          .attr("class", "line")
+                          .attr("d", function(d) { return line(d.values); })
+                          .style("stroke", function(d) { return color(d.name); });
 
+                        city.append("text")
+                          .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
+                          .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.rate) + ")"; })
+                          .attr("x", 3)
+                          .attr("dy", ".35em")
+                          .text(function(d) { 
+                            if (d.name=="H"+region){return "Heart Disease";}
+                            else if (d.name=="S"+region){return "Stroke";}
+                            else if (d.name=="A"+region){return "Asthma";}
+                            else if (d.name=="P"+region){return "Pulminary Disease";}
+                            else if (d.name=="D"+region){return "Diabedes";} 
+                          });
+                      });
 
-                     svg.append("g")
-                     .attr("class", "x axis")
-                     .attr("transform", "translate(0," + height + ")")
-                     .call(xAxis);
-
-                     svg.append("g")
-                     .attr("class", "y axis")
-                     .call(yAxis)
-                     .append("text")
-                     .attr("transform", "rotate(-90)")
-                     .attr("y", 6)
-                     .attr("dy", ".71em")
-                     .style("text-anchor", "end")
-                     .text("Trend");
-
-                     svg.append("path")
-                     .attr("class", "line")
-                     .style("stroke", "red")
-                     .attr("d", Hline(data))
-
-                     svg.append("path")
-                     .attr("class", "line")
-                     .style("stroke", "orange")
-                     .attr("d", Sline(data))
-
-                     svg.append("path")
-                     .attr("class", "line")
-                     .style("stroke", "yellow")
-                     .attr("d", Aline(data))
-
-                     svg.append("path")
-                     .attr("class", "line")
-                     .style("stroke", "green")
-                     .attr("d", Pline(data))
-
-                     svg.append("path")
-                     .attr("class", "line")
-                     .style("stroke", "blue")
-                     .attr("d", Dline(data))
-
-
-                     // -----------------------------
-                     /// Add Title then Legend
-                     /// -----------------------------
-
-                     svg.append("rect")
-                     .attr("x", 20)
-                     .attr("y", 50)
-                     .attr("fill", "red")
-                     .attr("height", 2)
-                     .attr("width", 40);
-
-                     svg.append("text")
-                     .attr("x", 30)
-                     .attr("y", 55)
-                     .text("Heart Disease");
-
-                     svg.append("rect")
-                     .attr("x", 20)
-                     .attr("y", 80)
-                     .attr("fill", "orange")
-                     .attr("height", 2)
-                     .attr("width", 40);
-
-                     svg.append("text")
-                     .attr("x", 30)
-                     .attr("y", 85)
-                     .text("Stroke");
-
-                     svg.append("rect")
-                     .attr("x", 20)
-                     .attr("y", 110)
-                     .attr("fill", "yellow")
-                     .attr("height", 2)
-                     .attr("width", 40);
-
-                     svg.append("text")
-                     .attr("x", 30)
-                     .attr("y", 115)
-                     .text("Asthma");
-
-                     svg.append("rect")
-                     .attr("x", 20)
-                     .attr("y", 140)
-                     .attr("fill", "green")
-                     .attr("height", 2)
-                     .attr("width", 40);
-
-                     svg.append("text")
-                     .attr("x", 30)
-                     .attr("y", 145)
-                     .text("Pulminary Disease");
-
-                     svg.append("rect")
-                     .attr("x", 20)
-                     .attr("y", 170)
-                     .attr("fill", "blue")
-                     .attr("height", 2)
-                     .attr("width", 40);
-
-                     svg.append("text")
-                     .attr("x", 30)
-                     .attr("y", 175)
-                     .text("Diabedes");
-
-
-                     });
-
-
-
-
-
-
-                  }());
+                      }());    
 
 
                 #item5.tab-pane
                   //
                     Div that will hold the chart
                   #chart_div5
+
+                    script.
+
+                      (function() {
+                      var margin = {top: 20, right: 200, bottom: 30, left: 50},
+                        width = 960 - margin.left - margin.right,
+                        height = 500 - margin.top - margin.bottom;
+
+                      var parseDate = d3.time.format("%Y").parse;
+
+                      var x = d3.time.scale()
+                        .range([0, width]);
+
+                      var y = d3.scale.linear()
+                        .range([height, 0]);
+
+                      var color = d3.scale.category10();
+
+                      var xAxis = d3.svg.axis()
+                        .scale(x)
+                        .orient("bottom")
+                        .tickFormat(d3.time.format("%b%y"));
+
+                      var yAxis = d3.svg.axis()
+                        .scale(y)
+                        .orient("left");
+
+                      var line = d3.svg.line()
+                        .interpolate("basis")
+                        .x(function(d) { return x(d.date); })
+                        .y(function(d) { return y(d.rate); });
+
+                      var svg = d3.select("#chart_div5").append("svg")
+                        .attr("width", width + margin.left + margin.right)
+                        .attr("height", height + margin.top + margin.bottom)
+                       .append("g")
+                        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                      var region =!{JSON.stringify(name)}
+
+
+                      d3.csv("csv/dtrend.csv", function(error, data) {
+                        color.domain(d3.keys(data[0]).filter(function(key) {
+                        return key == "H" + region || key == "S" + region || key == "A" + region || key == "P" + region || key == "D" + region;
+                        }));
+
+                        data.forEach(function(d) {
+                          d.date = parseDate(d.date);
+                        });
+
+                        var cities = color.domain().map(function(name) {
+                          return {
+                            name: name,
+                            values: data.map(function(d) {
+                              return {date: d.date, rate: +d[name]};
+                            })
+                          };
+                        });
+
+                        x.domain(d3.extent(data, function(d) { return d.date; }));
+
+                        y.domain([
+                          d3.min(cities, function(c) { return d3.min(c.values, function(v) { return v.rate; }); }),
+                          d3.max(cities, function(c) { return d3.max(c.values, function(v) { return v.rate; }); })
+                        ]);
+
+                        svg.append("g")
+                            .attr("class", "x axis")
+                            .attr("transform", "translate(0," + height + ")")
+                            .call(xAxis);
+
+                        svg.append("g")
+                          .attr("class", "y axis")
+                         .call(yAxis)
+                         .append("text")
+                          .attr("transform", "rotate(-90)")
+                          .attr("y", 6)
+                          .attr("dy", ".71em")
+                          .style("text-anchor", "end")
+                          .text("Rate (per 100,000 of population)");
+
+
+                        var city = svg.selectAll(".city")
+                          .data(cities)
+                         .enter().append("g")
+                          .attr("class", "city");
+
+                        city.append("path")
+                          .attr("class", "line")
+                          .attr("d", function(d) { return line(d.values); })
+                          .style("stroke", function(d) { return color(d.name); });
+
+                        city.append("text")
+                          .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
+                          .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.rate) + ")"; })
+                          .attr("x", 3)
+                          .attr("dy", ".35em")
+                          .text(function(d) {
+                            if (d.name=="H"+region){return "Heart Disease";}
+                            else if (d.name=="S"+region){return "Stroke";}
+                            else if (d.name=="A"+region){return "Asthma";}
+                            else if (d.name=="P"+region){return "Pulminary Disease";}
+                            else if (d.name=="D"+region){return "Diabedes";}
+                          });
+                      });
+
+                      }());
+ 
+
+
                 #item6.tab-pane
                   //
                     Div that will hold the chart
                   #chart_div6
+                    script.
+
+                     (function() {
+                      var margin = {top: 20, right: 200, bottom: 30, left: 50},
+                        width = 960 - margin.left - margin.right,
+                        height = 500 - margin.top - margin.bottom;
+
+                      var parseDate = d3.time.format("%Y").parse;
+
+                      var x = d3.time.scale()
+                        .range([0, width]);
+
+                      var y = d3.scale.linear()
+                        .range([height, 0]);
+
+                      var color = d3.scale.category10();
+
+                      var xAxis = d3.svg.axis()
+                        .scale(x)
+                        .orient("bottom")
+                        .tickFormat(d3.time.format("%b%y"));
+
+                      var yAxis = d3.svg.axis()
+                        .scale(y)
+                        .orient("left");
+
+                      var line = d3.svg.line()
+                        .interpolate("basis")
+                        .x(function(d) { return x(d.date); })
+                        .y(function(d) { return y(d.rate); });
+
+                      var svg = d3.select("#chart_div6").append("svg")
+                        .attr("width", width + margin.left + margin.right)
+                        .attr("height", height + margin.top + margin.bottom)
+                      .append("g")
+                        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                      var region =!{JSON.stringify(name)}
+
+
+                      d3.csv("csv/dtrend.csv", function(error, data) {
+                        color.domain(d3.keys(data[0]).filter(function(key) {
+                        return key == "H" + region || key == "S" + region || key == "A" + region || key == "P" + region || key == "D" + region;
+                        }));
+
+                        data.forEach(function(d) {
+                          d.date = parseDate(d.date);
+                        });
+
+                        var cities = color.domain().map(function(name) {
+                          return {
+                          name: name,
+                          values: data.map(function(d) {
+                            return {date: d.date, rate: +d[name]};
+                          })
+                        };
+                        });
+
+                        x.domain(d3.extent(data, function(d) { return d.date; }));
+
+                        y.domain([
+                          d3.min(cities, function(c) { return d3.min(c.values, function(v) { return v.rate; }); }),
+                          d3.max(cities, function(c) { return d3.max(c.values, function(v) { return v.rate; }); })
+                        ]);
+
+                        svg.append("g")
+                          .attr("class", "x axis")
+                          .attr("transform", "translate(0," + height + ")")
+                          .call(xAxis);
+
+                        svg.append("g")
+                          .attr("class", "y axis")
+                         .call(yAxis)
+                        .append("text")
+                          .attr("transform", "rotate(-90)")
+                          .attr("y", 6)
+                          .attr("dy", ".71em")
+                          .style("text-anchor", "end")
+                          .text("Rate (per 100,000 of population)");
+
+
+                        var city = svg.selectAll(".city")
+                          .data(cities)
+                        .enter().append("g")
+                          .attr("class", "city");
+
+                        city.append("path")
+                          .attr("class", "line")
+                          .attr("d", function(d) { return line(d.values); })
+                          .style("stroke", function(d) { return color(d.name); });
+
+                        city.append("text")
+                          .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
+                          .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.rate) + ")"; })
+                          .attr("x", 3)
+                          .attr("dy", ".35em")
+                          .text(function(d) {
+                            if (d.name=="H"+region){return "Heart Disease";}
+                            else if (d.name=="S"+region){return "Stroke";}
+                            else if (d.name=="A"+region){return "Asthma";}
+                            else if (d.name=="P"+region){return "Pulminary Disease";}
+                            else if (d.name=="D"+region){return "Diabedes";}
+                          });
+                      });
+
+                     }());
+
+
+
         p.caption
           | COPD = Chronic obstructive pulmonary disease, which includes chronic bronchitis and emphysema.
         .row-fluid

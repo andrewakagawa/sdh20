@@ -55,6 +55,25 @@ app.get('/region2', function(req, res){
   });
 });
 
+app.get('/test3', function(req, res){
+  res.render('test3', {
+    title: 'D3 test'
+  });
+});
+
+app.get('/test4', function(req, res){
+  res.render('test4', {
+    title: 'D3 test'
+  });
+});
+
+
+app.get('/region2', function(req, res){
+  res.render('region2', {
+    title: 'D3 test'
+  });
+});
+
 
 //create an array of
 var region = [

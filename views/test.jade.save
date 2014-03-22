@@ -1,0 +1,33 @@
+  GNU nano 2.2.6             File: region.jade
+
+extends layout
+
+block content
+    script(src='http://d3js.org/d3.v3.min.js')
+    script(src='http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js')
+    script(src='http://code.jquery.com/jquery.js')
+    script(src='/lib/bootstrap/bootstrap.min.js')
+    include includes/mainmenu.jade
+    .container
+      h1 #{title} Health Stats
+      .row-fluid
+        .span12
+         .span10.offset1
+
+        .row-fluid
+          .span10.offset1
+              h2 How #{title} stacks up
+              ul.nav.nav-tabs
+                li
+                  a(href='#item7', data-toggle='tab') Deaths
+                li
+                  a(href='#item8', data-toggle='tab') Hospitalizations
+                li
+                  a(href='#item9', data-toggle='tab') Emergency
+              .tab-content
+                #item7.tab-pane.active
+                  //
+                    Div that will hold the chart
+                  #chart_div7
+                    include includes/test.jade
+
