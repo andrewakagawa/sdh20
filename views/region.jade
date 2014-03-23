@@ -681,7 +681,7 @@ block content
                           .stop(true).fadeTo(300, 1);
                       })
                       .on('mouseout', function (d) {
-                      $("#tt2").fadeOut(1500, 0);
+                      $("#tooltip").fadeOut(1500, 0);
                       });
 
                     /*var label = svg.selectAll("text")
@@ -868,11 +868,59 @@ block content
 
 
 
-
         p.caption
-          | COPD = Chronic obstructive pulmonary disease, which includes chronic bronchitis and emphysema.
-          br
           | 2011 contributors to 3-4-50% in percentages
+        .row-fluid
+          .span12
+            .span10.offset1
+              h2 Where #{title} may look to improve
+              ul.nav.nav-tabs
+                li
+                  a(href='#map1', data-toggle='tab') Deaths
+                li
+                  a(href='#map2', data-toggle='tab') Hospitalizations
+                li
+                  a(href='#map3', data-toggle='tab') Emergency
+              .tab-content
+                #map1.tab-pane.active
+                  //
+                    Div that will hold the chart
+                  #map_div1
+                    script.
+                      (function(){
+                        /*var map = L.map('map_div1').setView([33.0200, -116.7700], 13);
+ 
+                        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        }).addTo(map);*/
+
+                        // create a map in the "map" div, set the view to a given place and zoom
+                        var map = L.map('map_div1').setView([51.505, -0.09], 13);
+
+                        // add an OpenStreetMap tile layer
+                        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        }).addTo(map);
+
+                        // add a marker in the given location, attach some popup content to it and open the popup
+                        L.marker([51.5, -0.09]).addTo(map)
+                         .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
+                         .openPopup();
+
+                      }());
+
+                #map2.tab-pane
+                  //
+                    Div that will hold the chart
+                  #map_div2
+
+                #map3.tab-pane
+                  //
+                    Div that will hold the chart
+                  #map_div3
+
+
+
         .row-fluid
           .span12
             .span10.offset1
@@ -1039,7 +1087,7 @@ block content
                       var region =!{JSON.stringify(name)}
 
 
-                      d3.csv("csv/dtrend.csv", function(error, data) {
+                      d3.csv("csv/htrend.csv", function(error, data) {
                         color.domain(d3.keys(data[0]).filter(function(key) {
                         return key == "H" + region || key == "S" + region || key == "A" + region || key == "P" + region || key == "D" + region;
                         }));
@@ -1152,7 +1200,7 @@ block content
                       var region =!{JSON.stringify(name)}
 
 
-                      d3.csv("csv/dtrend.csv", function(error, data) {
+                      d3.csv("csv/etrend.csv", function(error, data) {
                         color.domain(d3.keys(data[0]).filter(function(key) {
                         return key == "H" + region || key == "S" + region || key == "A" + region || key == "P" + region || key == "D" + region;
                         }));
@@ -1221,8 +1269,6 @@ block content
 
 
 
-        p.caption
-          | COPD = Chronic obstructive pulmonary disease, which includes chronic bronchitis and emphysema.
         .row-fluid
           .span12
             .span10.offset1

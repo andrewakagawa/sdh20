@@ -150,6 +150,10 @@ h1, h2 {
   font-size:3rem;
 }
       
+/* Leaflet Map */
+#map_div1 { height: 150px; }
+
+
 
 /* Marketing Copy and Footer */
 .copy {
