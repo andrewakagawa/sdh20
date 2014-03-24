@@ -873,7 +873,7 @@ block content
         .row-fluid
           .span12
             .span10.offset1
-              h2 Where #{title} may look to improve
+              h2 Where in #{title} we can change
               ul.nav.nav-tabs
                 li
                   a(href='#map1', data-toggle='tab') Deaths
@@ -887,7 +887,6 @@ block content
                     Div that will hold the chart
                   #map_div1
                   script.
-                      (function(){
                         var map = L.map('map_div1').setView([33.0200, -116.7700], 9);
  
                         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -895,7 +894,6 @@ block content
                         }).addTo(map);
 
 
-                      }());
 
                 #map2.tab-pane
                   //
