@@ -77,11 +77,11 @@ app.get('/region2', function(req, res){
 
 //create an array of
 var region = [
-    { name: 'alpine', title : 'Alpine'},
+    { name: 'alpine', title : 'Alpine', lat: '32.8344', long: '-116.7706'},
     { name: 'anza-borregosprings', title : 'Anza-Borrego Springs'},
     { name: 'carlsbad', title : 'Carlsbad'},
     { name: 'centralsd', title : 'Central SD'},
-    { name: 'chulavista', title : 'Chula Vista'},
+    { name: 'chulavista', title : 'Chula Vista', lat: '32.6378', long: '-117.0481'},
     { name: 'coastal', title : 'Coastal'},
     { name: 'coronado', title : 'Coronado'},
     { name: 'delmar-miramesa', title : 'Del Mar-Mira Mesa'},
@@ -116,7 +116,7 @@ var region = [
     { name: 'springvalley', title : 'Spring Valley'},
     { name: 'sweetwater', title : 'Sweetwater'},
     { name: 'university', title : 'University'},
-    { name: 'valley', title : 'ValleyCenter'},
+    { name: 'valley', title : 'Valley Center'},
     { name: 'vista', title : 'Vista'},
     { name: "SDCO", title: 'San Diego County'}
 ];
@@ -135,7 +135,7 @@ function loadRegion(req, res, next) {
 //routes data
 var sendInfo = function (req, res, next) {
   res.render('region',{
-    name: req.region.name, title: req.region.title
+    name: req.region.name, title: req.region.title, lat: req.region.lat, long: req.region.long 
   });
 }
 

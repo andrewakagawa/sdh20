@@ -900,19 +900,20 @@ block content
                         var map = L.map('map_div1',{
                           center: new L.LatLng(33,-116),
                           zoom: 9,
-                          layers: [mapLayer, exerciseLayer, dietLayer]
+                          layers: [mapLayer, circles]
                         });
 
                         var baseMaps = {
-                          "San Diego": mapLayer
+                          "Base Map": mapLayer
                         };
+
                         var overlayMaps = {
-                          "Exercise": exerciseLayer,
-                          "Diet": dietLayer
+                          "Circle Test": circles
                         };
 
                         L.control.layers(baseMaps, overlayMaps).addTo(map);
                        
+
                 #map2.tab-pane
                   //
                     Div that will hold the chart
