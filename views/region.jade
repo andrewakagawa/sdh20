@@ -873,18 +873,11 @@ block content
         .row-fluid
           .span12
             .span10.offset1
-              h2 Where in #{title} we can change
-              ul.nav.nav-tabs
-                li
-                  a(href='#map1', data-toggle='tab') Deaths
-                li
-                  a(href='#map2', data-toggle='tab') Hospitalizations
-                li
-                  a(href='#map3', data-toggle='tab') Emergency
-              .tab-content
-                #map1.tab-pane.active
+                  h2 Where we can make changes in #{title}
+              
+                  h5 Lets analyze by selecting map layers in the top right corner and clicking a region for further info
                   //
-                    Div that will hold the chart
+                    Div that will hold the map
                   #map_div1
 
                   include includes/mapdata.jade
@@ -898,21 +891,32 @@ block content
                         });
 
                         var map = L.map('map_div1',{
-                          center: new L.LatLng(33,-116),
+                          center: new L.LatLng(32.95,-116.9),
                           zoom: 9,
-                          layers: [mapLayer, exerciseLayer, dietLayer]
+                          layers: [mapLayer, exerciseLayer]
                         });
 
                         var baseMaps = {
                           "San Diego": mapLayer
                         };
                         var overlayMaps = {
-                          "Exercise": exerciseLayer,
-                          "Diet": dietLayer
+                          "Exercise at Home 2+Times per Week, Ages 18+ (2013)": exerciseLayer,
+                          "Presently Controlling Diet, Ages 18+ (2013)": dietLayer,
+                          "Current Smokers, Ages 18+ (2011)": smokeLayer,
+                          "Overweight, Ages 18+ (2011)": overweightLayer,
+                          "Ate Fast Food 3+ Times per Week, All Ages (2011)": fastfoodLayer,
+                          "Eats 5+ Servings of Fruits & Vegetables, Ages 2-11 (2011)": fruitsLayer,
+                          "Physically Active >=1hr, 5+ Days per Week, Ages 5-11 (2011)": activeLayer
                         };
 
                         L.control.layers(baseMaps, overlayMaps).addTo(map);
-                       
+
+                        for (var i=0; i<42; i++){
+                          if (stats[i].SRA == !{JSON.stringify(name)}){ 
+                            var marker = L.marker([stats[i].lat, stats[i].long]).addTo(map);
+                          }
+                        }
+
                 #map2.tab-pane
                   //
                     Div that will hold the chart

@@ -5,10 +5,10 @@ script.
   for (var i=0; i<42; i++)
   {
     exerciseArr.push(L.circle([stats[i].lat, stats[i].long], dataVisualize(stats[i].exercise) , { 
-      color: 'purple', 
-      fillColor: 'purple', 
+      color: 'red', 
+      fillColor: '#f03', 
       fillOpacity: 0.5 })
-      .bindPopup("<h1>" + stats[i].exercise +"%</h1> of people age 18+ <br> exercise in " + stats[i].title  ));
+      .bindPopup(stats[i].SRA + "<br>" + stats[i].exercise + "% Exercise" ));
   }
   var exerciseLayer=L.layerGroup(exerciseArr);
 
@@ -19,7 +19,7 @@ script.
       color: 'blue',
       fillColor: 'blue',
       fillOpacity: 0.5 })
-      .bindPopup("<h1>" + stats[i].diet +"%</h1> of people age 18+ <br> presently control their diet in " + stats[i].title   ));
+      .bindPopup(stats[i].SRA + "<br>" + stats[i].diet + "% Diet" ));
   }
   var dietLayer=L.layerGroup(dietArr);
 
@@ -30,7 +30,7 @@ script.
       color: 'orange',
       fillColor: 'orange',
       fillOpacity: 0.5 })
-      .bindPopup("<h1>" + stats[i].smoke +"%</h1> of people age 18+ <br> smoke in " + stats[i].title   ));
+      .bindPopup(stats[i].SRA + "<br>" + stats[i].smoke + "% Smoke" ));
 
   }
   var smokeLayer=L.layerGroup(smokeArr);
@@ -39,10 +39,10 @@ script.
   for (var i=0; i<42; i++)
   {
     overweightArr.push(L.circle([stats[i].lat, stats[i].long], dataVisualize(stats[i].overweight) , {
-      color: 'red',
-      fillColor: 'red',
+      color: 'yellow',
+      fillColor: 'yellow',
       fillOpacity: 0.5 })
-      .bindPopup("<h1>" + stats[i].overweight +"%</h1> of people age 18+ <br> are overweight in " + stats[i].title   ));
+      .bindPopup(stats[i].SRA + "<br>" + stats[i].overweight + "% Over Weight" ));
 
   }
   var overweightLayer=L.layerGroup(overweightArr);
@@ -54,7 +54,7 @@ script.
       color: 'red',
       fillColor: '#f03',
       fillOpacity: 0.5 })
-      .bindPopup("<h1>" + stats[i].fastfood +"%</h1> of people <br> eat fastfood 3+ times per week " + stats[i].title   ));
+      .bindPopup(stats[i].SRA + "<br>" + stats[i].fastfood + "% Fast Food" ));
 
   }
   var fastfoodLayer=L.layerGroup(fastfoodArr);
@@ -66,7 +66,7 @@ script.
       color: 'purple',
       fillColor: 'purple',
       fillOpacity: 0.5 })
-      .bindPopup("<h1>" + stats[i].fruits +"%</h1> of children age 2 - 11 <br> eat fruits and veggies 5+ per week" + stats[i].title ));
+      .bindPopup(stats[i].SRA + "<br>" + stats[i].fruits + "% Fruits" ));
 
   }
   var fruitsLayer=L.layerGroup(fruitsArr);
@@ -78,12 +78,11 @@ script.
       color: 'green',
       fillColor: 'green',
       fillOpacity: 0.5 })
-      .bindPopup("<h1>" + stats[i].active +"%</h1> of children age 5 - 11 <br> are physically active 5+ per week" + stats[i].title ));
+      .bindPopup(stats[i].SRA + "<br>" + stats[i].active + "% Active" ));
 
   }
   var activeLayer=L.layerGroup(activeArr);
 
-      var marker = L.marker([33, -117]).addTo(map);
 
   
   //exagerates the data for better visualization 
