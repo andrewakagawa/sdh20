@@ -985,7 +985,7 @@ block content
 
                       d3.csv("csv/dtrend.csv", function(error, data) {
                         color.domain(d3.keys(data[0]).filter(function(key) { 
-                        return key == "H" + region || key == "S" + region || key == "A" + region || key == "P" + region || key == "D" + region; 
+                        return key == "H" + region || key == "S" + region || key == "A" + region || key == "P" + region || key == "D" + region || key == "C" + region; 
                         }));
 
                         data.forEach(function(d) {
@@ -1044,6 +1044,8 @@ block content
                             else if (d.name=="A"+region){return "Asthma";}
                             else if (d.name=="P"+region){return "Pulminary Disease";}
                             else if (d.name=="D"+region){return "Diabetes";} 
+                            else if (d.name=="C"+region){return "Cancer";}
+
                           });
                       });
 
@@ -1290,45 +1292,43 @@ block content
                       a(href='http://www.cdc.gov/cancer/') cancer
                       | and
                       a(href='http://www.cdc.gov/heartdisease/')  heart disease
+                      | and
+                      a(href='http://www.cdc.gov/stroke/')  stroke
+                      | and
+                      a(href='http://www.cdc.gov/asthma/')  asthma
+                      | and
+                      a(href='http://www.cdc.gov/copd/')  pulminary disease
+                      | and
+                      a(href='http://www.cdc.gov/diabetes/')  diabetes
+
+
                 li
                   | Increase your physical activity
                   ul
                     li
-                      | Take more
+                      | Take more 
                       a(href='http://www.sdmts.com/tripplanner.asp') public transportation
                     li
-                      | Find a nearby
-                      a(href='http://www.chulavistaca.gov/City_Services/Community_Services/Public_Works_Operations/Parks/default.asp') park
-                      | or
-                      a(href='http://www.yelp.com/search?cflt=gyms&find_loc=Chula+Vista%2C+San+Diego%2C+CA') gym
+                      | Find a nearby 
+                      a(href='http://www.co.san-diego.ca.us/parks/') park
+                      | or 
+                      a(href='http://www.yelp.com/search?find_desc=gyms&find_loc=san+diego&ns=1&ls=adfdf5ce4e07b889') gym
                     li
-                      | Join a
-                      a(href='http://www.meetup.com/find/events/fitness/?radius=50&userFreeform=Chula+Vista%2C+California%2C+USA&mcId=c91909&eventFilter=mysugg') physical activity group on Meetup.com
+                      | Join a 
+                      a(href='http://www.meetup.com/find/events/fitness/?allMeetups=false&radius=50&userFreeform=san+dieg&mcId=c92101&eventFilter=mysugg') physical activity group on Meetup.com
                 li
                   | Improve your diet
                   ul
                     li
                       | Look up your closest
-                      a(href='http://www.yelp.com/search?cflt=grocery&find_loc=Chula+Vista%2C+CA') supermarket
+                      a(href='http://www.yelp.com/search?cflt=grocery&find_loc=San+Diego%2C+CA') supermarket
                       | or
-                      a(href='http://www.ci.chula-vista.ca.us/Events/downtownFarmersMarket.asp') farmer's market
+                      a(href='http://sdfarmbureau.org/BuyLocal/Farmers-Markets.php') farmer's market
                 //
                   insert sponsored logos here
                 li
                   | Become an activist
                   ul
-                    li Petition your local representative to support more healthy initiatives
-                    address
-                      strong Congressman Juan Vargas
-                      br
-                      | 333 F Street, Suite A
-                      br
-                      | Chula Vista, CA 91910
-                      br
-                      | Phone: 619-422-5963
-                      br
-                      | Fax: 619-422-7290
-                      br
-                      | Website:
-                      a(href='https://vargas.house.gov/') https://vargas.house.gov/
+                    li 
+                      a(href='http://sdpublic.sdcounty.ca.gov/') Petition your local representative to support more healthy initiatives
 

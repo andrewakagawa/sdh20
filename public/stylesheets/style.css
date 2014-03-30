@@ -90,13 +90,13 @@ p {
 
 .caption {
   text-align: center;
-  font-size:0.9rem;
+  font-size:1.5rem;
   margin-top:-6rem;
 }
 
 .list-cta {
   font-weight:700;
-  font-size:1.3rem;
+  font-size:1.7rem;
 }
 
 .list-cta li {
@@ -110,7 +110,7 @@ p {
 
 .list-cta address {
   margin-left:100px;
-  font-size:1rem;
+  font-size:1.5rem;
 }
 
 h1, h2 {
