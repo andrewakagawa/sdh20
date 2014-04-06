@@ -926,7 +926,7 @@ block content
                         var dasthmaArr = [];
                         for (var i=0; i<42; i++)
                         {
-                          dasthmaArr.push(L.circle([stats[i].lat, stats[i].long], stats[i].dasthma , {
+                          dasthmaArr.push(L.circle([stats[i].lat, stats[i].long], conditionVisualization(stats[i].dasthma) , {
                             color: 'orange',
                             fillColor: 'orange',
                             fillOpacity: 0.3 })
@@ -1058,7 +1058,7 @@ block content
                         var hasthmaArr = [];
                         for (var i=0; i<42; i++)
                         {
-                          hasthmaArr.push(L.circle([stats[i].lat, stats[i].long], stats[i].hasthma , {
+                          hasthmaArr.push(L.circle([stats[i].lat, stats[i].long], conditionVisualization(stats[i].hasthma) , {
                             color: 'orange',
                             fillColor: 'orange',
                             fillOpacity: 0.3 })
@@ -1175,7 +1175,7 @@ block content
                         var easthmaArr = [];
                         for (var i=0; i<42; i++)
                         {
-                          easthmaArr.push(L.circle([stats[i].lat, stats[i].long], stats[i].easthma , {
+                          easthmaArr.push(L.circle([stats[i].lat, stats[i].long], conditionVisualization(stats[i].easthma) , {
                             color: 'orange',
                             fillColor: 'orange',
                             fillOpacity: 0.3 })
