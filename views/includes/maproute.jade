@@ -5,8 +5,8 @@ script.
   for (var i=0; i<42; i++)
   {
     exerciseArr.push(L.circle([stats[i].lat, stats[i].long], dataVisualize(stats[i].exercise) , { 
-      color: 'purple', 
-      fillColor: 'purple', 
+      color: '#9966ff', 
+      fillColor: '#9966ff', 
       fillOpacity: 0.5 })
       .bindPopup("<h1>" + stats[i].exercise +"%</h1> of people age 18+ <br> exercise in " + stats[i].title  ));
   }
@@ -16,8 +16,8 @@ script.
   for (var i=0; i<42; i++)
   {
     dietArr.push(L.circle([stats[i].lat, stats[i].long], dataVisualize(stats[i].diet) , {
-      color: 'blue',
-      fillColor: 'blue',
+      color: '#6666ff',
+      fillColor: '#6666ff',
       fillOpacity: 0.5 })
       .bindPopup("<h1>" + stats[i].diet +"%</h1> of people age 18+ <br> presently control their diet in " + stats[i].title   ));
   }
@@ -27,8 +27,8 @@ script.
   for (var i=0; i<42; i++)
   {
     smokeArr.push(L.circle([stats[i].lat, stats[i].long], dataVisualize(stats[i].smoke) , {
-      color: 'orange',
-      fillColor: 'orange',
+      color: '#ff6600',
+      fillColor: '#ff6600',
       fillOpacity: 0.5 })
       .bindPopup("<h1>" + stats[i].smoke +"%</h1> of people age 18+ <br> smoke in " + stats[i].title   ));
 
@@ -39,8 +39,8 @@ script.
   for (var i=0; i<42; i++)
   {
     overweightArr.push(L.circle([stats[i].lat, stats[i].long], dataVisualize(stats[i].overweight) , {
-      color: 'red',
-      fillColor: 'red',
+      color: '#ff3300',
+      fillColor: '#ff3300',
       fillOpacity: 0.5 })
       .bindPopup("<h1>" + stats[i].overweight +"%</h1> of people age 18+ <br> are overweight in " + stats[i].title   ));
 
@@ -51,8 +51,8 @@ script.
   for (var i=0; i<42; i++)
   {
     fastfoodArr.push(L.circle([stats[i].lat, stats[i].long], dataVisualize(stats[i].fastfood) , {
-      color: 'red',
-      fillColor: '#f03',
+      color: '#ff0033',
+      fillColor: '#ff0033',
       fillOpacity: 0.5 })
       .bindPopup("<h1>" + stats[i].fastfood +"%</h1> of people <br> eat fastfood 3+ times per week " + stats[i].title   ));
 
@@ -63,8 +63,8 @@ script.
   for (var i=0; i<42; i++)
   {
     fruitsArr.push(L.circle([stats[i].lat, stats[i].long], dataVisualize(stats[i].fruits) , {
-      color: 'purple',
-      fillColor: 'purple',
+      color: '#33ffcc',
+      fillColor: '#33ffcc',
       fillOpacity: 0.5 })
       .bindPopup("<h1>" + stats[i].fruits +"%</h1> of children age 2 - 11 <br> eat fruits and veggies 5+ per week" + stats[i].title ));
 
@@ -75,15 +75,63 @@ script.
   for (var i=0; i<42; i++)
   {
     activeArr.push(L.circle([stats[i].lat, stats[i].long], dataVisualize(stats[i].active) , {
-      color: 'green',
-      fillColor: 'green',
+      color: '#66ffcc',
+      fillColor: '#66ffcc',
       fillOpacity: 0.5 })
       .bindPopup("<h1>" + stats[i].active +"%</h1> of children age 5 - 11 <br> are physically active 5+ per week" + stats[i].title ));
 
   }
   var activeLayer=L.layerGroup(activeArr);
 
-      var marker = L.marker([33, -117]).addTo(map);
+  var povertyArr = [];
+  for (var i=0; i<42; i++)
+  {
+    povertyArr.push(L.circle([stats[i].lat, stats[i].long], dataVisualize(stats[i].poverty) , {
+      color: '#ffcc33',
+      fillColor: '#ffcc33',
+      fillOpacity: 0.5 })
+      .bindPopup("<h1>" + stats[i].poverty +"%</h1> of population <br> are below federal povety level in " + stats[i].title ));
+
+  }
+  var povertyLayer=L.layerGroup(povertyArr);
+
+  var degreeArr = [];
+  for (var i=0; i<42; i++)
+  {
+    degreeArr.push(L.circle([stats[i].lat, stats[i].long], dataVisualize(stats[i].degree) , {
+      color: '#6666ff',
+      fillColor: '#6666ff',
+      fillOpacity: 0.5 })
+      .bindPopup("<h1>" + stats[i].degree +"%</h1> of population <br> are below federal povety level in " + stats[i].title ));
+
+  }
+  var degreeLayer=L.layerGroup(degreeArr);
+
+  var incomeArr = [];
+  for (var i=0; i<42; i++)
+  {
+    incomeArr.push(L.circle([stats[i].lat, stats[i].long], incomeVisualize(stats[i].income) , {
+      color: '#33ff33',
+      fillColor: '#33ff33',
+      fillOpacity: 0.5 })
+      .bindPopup("<h1>$" + stats[i].income +"</h1> is the median <br> household income in " + stats[i].title ));
+
+  }
+  var incomeLayer=L.layerGroup(incomeArr);
+
+  var populationArr = [];
+  for (var i=0; i<42; i++)
+  {
+    populationArr.push(L.circle([stats[i].lat, stats[i].long], populationVisualize(stats[i].population) , {
+      color: '#ffff00',
+      fillColor: '#ffff00',
+      fillOpacity: 0.5 })
+      .bindPopup("<h1>" + stats[i].population +"</h1> is the population <br> in " + stats[i].title ));
+
+  }
+  var populationLayer=L.layerGroup(populationArr);
+
+
 
   
   //exagerates the data for better visualization 
@@ -91,4 +139,25 @@ script.
   {
     return (radius - 10)*100;  //starting out with 10 but should update later with a min value function
   }
+
+
+  //reduces the data for better visualization.  I understand that my function sucks and will update later...
+  function incomeVisualize(radius)
+  {
+    return (radius)/25; 
+  }
+
+  //reduces the data for better visualization.  I understand that my function sucks and will update later...
+  function populationVisualize(radius)
+  {
+    return (radius)/200;
+  }
+
+
+  //reduces the data for better visualization.  I understand that my function sucks and will update later...
+  function conditionVisualize(radius)
+  {
+    return radius * 25;  //starting out with 10 but should update later with a min value function
+  }
+
 

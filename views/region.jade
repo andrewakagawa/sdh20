@@ -873,31 +873,124 @@ block content
         .row-fluid
           .span12
             .span10.offset1
-                  h2 Where we can make changes in #{title}
+              h2 Where we can make changes in #{title}
               
-                  h5 Lets analyze by selecting map layers in the top right corner and clicking a region for further info
+              h5 Lets analyze by selecting map layers in the top right corner and clicking a region for further info
+
+              ul.nav.nav-tabs
+                li
+                  a(href='#map1', data-toggle='tab') Deaths
+                li
+                  a(href='#map2', data-toggle='tab') Hospitalizations
+                li
+                  a(href='#map3', data-toggle='tab') Emergency
+              .tab-content
+
+                #map1.tab-pane.active
                   //
                     Div that will hold the map
+
                   #map_div1
+                    include includes/mapdata.jade
 
-                  include includes/mapdata.jade
+                    include includes/maproute.jade
 
-                  include includes/maproute.jade
+                    script.
 
-                  script.
-                    
-                        var mapLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                        });
+                      (function() {
 
-                        var map = L.map('map_div1',{
+                        var dheartdiseaseArr = [];
+                        for (var i=0; i<42; i++)
+                        {
+                          dheartdiseaseArr.push(L.circle([stats[i].lat, stats[i].long], conditionVisualize(stats[i].dheartdisease) , {
+                            color: 'orange',
+                            fillColor: 'orange',
+                            fillOpacity: 0.3 })
+                            .bindPopup("<h1>" + stats[i].dheartdisease + "</h1> Heart Disease Deathrate <br> per 100,000 of population in " + stats[i].title ));
+
+                        }
+                        var dheartdiseaseLayer=L.layerGroup(dheartdiseaseArr);
+
+                        var dstrokeArr = [];
+                        for (var i=0; i<42; i++)
+                        {
+                          dstrokeArr.push(L.circle([stats[i].lat, stats[i].long], conditionVisualize(stats[i].dstroke) , {
+                            color: 'orange',
+                            fillColor: 'orange',
+                            fillOpacity: 0.3 })
+                            .bindPopup("<h1>" + stats[i].dstroke + "</h1> Stroke Death Rate <br> per 100,000 of population in " + stats[i].title ));
+
+                        }
+                        var dstrokeLayer=L.layerGroup(dstrokeArr);
+
+                        var dasthmaArr = [];
+                        for (var i=0; i<42; i++)
+                        {
+                          dasthmaArr.push(L.circle([stats[i].lat, stats[i].long], stats[i].dasthma , {
+                            color: 'orange',
+                            fillColor: 'orange',
+                            fillOpacity: 0.3 })
+                            .bindPopup("<h1>" + stats[i].dasthma + "</h1> Asthma Death Rate <br> per 100,000 of population in " + stats[i].title ));
+
+                        }
+                        var dasthmaLayer=L.layerGroup(dasthmaArr);
+
+                        var dpulminarydiseaseArr = [];
+                        for (var i=0; i<42; i++)
+                        {
+                          dpulminarydiseaseArr.push(L.circle([stats[i].lat, stats[i].long], conditionVisualize(stats[i].dpulminarydisease) , {
+                            color: 'orange',
+                            fillColor: 'orange',
+                            fillOpacity: 0.3 })
+                            .bindPopup("<h1>" + stats[i].dpulminarydisease + "</h1> Pulminary Disease Death Rate <br> per 100,000 of population in " + stats[i].title ));
+
+                        }
+                        var dpulminarydiseaseLayer=L.layerGroup(dpulminarydiseaseArr);
+
+                        var ddiabetesArr = [];
+                        for (var i=0; i<42; i++)
+                        {
+                          ddiabetesArr.push(L.circle([stats[i].lat, stats[i].long], conditionVisualize(stats[i].ddiabetes) , {
+                            color: 'orange',
+                            fillColor: 'orange',
+                            fillOpacity: 0.3 })
+                            .bindPopup("<h1>" + stats[i].ddiabetes + "</h1> Diabetes Death Rate <br> per 100,000 of population in " + stats[i].title ));
+
+                        }
+                        var ddiabetesLayer=L.layerGroup(ddiabetesArr);
+
+                        var dcancerArr = [];
+                        for (var i=0; i<42; i++)
+                        {
+                          dcancerArr.push(L.circle([stats[i].lat, stats[i].long], conditionVisualize(stats[i].dcancer) , {
+                            color: 'orange',
+                            fillColor: 'orange',
+                            fillOpacity: 0.3 })
+                            .bindPopup("<h1>" + stats[i].dcancer + "</h1> Cancer Death Rate <br> per 100,000 of population in " + stats[i].title ));
+
+                        }
+                        var dcancerLayer=L.layerGroup(dcancerArr);	
+
+
+
+                        var deathMap = L.map('map_div1',{
                           center: new L.LatLng(32.95,-116.9),
                           zoom: 9,
-                          layers: [mapLayer, exerciseLayer]
+                          layers: [dheartdiseaseLayer, exerciseLayer]
                         });
 
+                        var mapLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        }).addTo(deathMap);
+
                         var baseMaps = {
-                          "San Diego": mapLayer
+                          "Heart Disease Death Rate per 100,000 of population (2011)": dheartdiseaseLayer,
+                          "Stroke Death Rate per 100,000 of population (2011)": dstrokeLayer,
+                          "Asthma Death Rate per 100,000 of population (2011)": dasthmaLayer,
+                          "Pulminary Disease Death Rate per 100,000 of population (2011)": dpulminarydiseaseLayer,
+                          "Diabetes Death Rate per 100,000 of population (2011)": ddiabetesLayer,
+                          "Cancer Death Rate per 100,000 of population (2011)": dcancerLayer
+
                         };
                         var overlayMaps = {
                           "Exercise at Home 2+Times per Week, Ages 18+ (2013)": exerciseLayer,
@@ -906,27 +999,259 @@ block content
                           "Overweight, Ages 18+ (2011)": overweightLayer,
                           "Ate Fast Food 3+ Times per Week, All Ages (2011)": fastfoodLayer,
                           "Eats 5+ Servings of Fruits & Vegetables, Ages 2-11 (2011)": fruitsLayer,
-                          "Physically Active >=1hr, 5+ Days per Week, Ages 5-11 (2011)": activeLayer
+                          "Physically Active >=1hr, 5+ Days per Week, Ages 5-11 (2011)": activeLayer,
+                          "Below Federal Poverty Level (2011)": povertyLayer,
+                          "Population with a Bachelor's Degree or Higher (2011)": degreeLayer,
+                          "Total Population with (2011)": populationLayer,
+                          "Total Median Household Income (2011)": incomeLayer
+
                         };
 
-                        L.control.layers(baseMaps, overlayMaps).addTo(map);
+                        L.control.layers(baseMaps, overlayMaps).addTo(deathMap);
 
                         for (var i=0; i<42; i++){
                           if (stats[i].SRA == !{JSON.stringify(name)}){ 
-                            var marker = L.marker([stats[i].lat, stats[i].long]).addTo(map);
+                            var marker = L.marker([stats[i].lat, stats[i].long]).addTo(deathMap);
                           }
                         }
+                       setInterval(function(){ deathMap.invalidateSize()}, 400);
+
+                      }());
 
                 #map2.tab-pane
                   //
                     Div that will hold the chart
                   #map_div2
 
+                    include includes/mapdata.jade
+
+                    include includes/maproute.jade
+
+
+                    script.
+                      (function() {
+
+                        var hheartdiseaseArr = [];
+                        for (var i=0; i<42; i++)
+                        {
+                          hheartdiseaseArr.push(L.circle([stats[i].lat, stats[i].long], conditionVisualize(stats[i].hheartdisease) , {
+                            color: 'orange',
+                            fillColor: 'orange',
+                            fillOpacity: 0.3 })
+                            .bindPopup("<h1>" + stats[i].hheartdisease + "</h1> Heart Disease Hospital Visit Rate <br> per 100,000 of population in " + stats[i].title ));
+
+                        }
+                        var hheartdiseaseLayer=L.layerGroup(hheartdiseaseArr);
+
+                        var hstrokeArr = [];
+                        for (var i=0; i<42; i++)
+                        {
+                          hstrokeArr.push(L.circle([stats[i].lat, stats[i].long], conditionVisualize(stats[i].hstroke) , {
+                            color: 'orange',
+                            fillColor: 'orange',
+                            fillOpacity: 0.3 })
+                            .bindPopup("<h1>" + stats[i].hstroke + "</h1> Stroke Hospital Visit Rate <br> per 100,000 of population in " + stats[i].title ));
+
+                        }
+                        var hstrokeLayer=L.layerGroup(hstrokeArr);
+
+                        var hasthmaArr = [];
+                        for (var i=0; i<42; i++)
+                        {
+                          hasthmaArr.push(L.circle([stats[i].lat, stats[i].long], stats[i].hasthma , {
+                            color: 'orange',
+                            fillColor: 'orange',
+                            fillOpacity: 0.3 })
+                            .bindPopup("<h1>" + stats[i].hasthma + "</h1> Asthma Hospital Visit Rate <br> per 100,000 of population in " + stats[i].title ));
+
+                        }
+                        var hasthmaLayer=L.layerGroup(hasthmaArr);
+
+                        var hpulminarydiseaseArr = [];
+                        for (var i=0; i<42; i++)
+                        {
+                          hpulminarydiseaseArr.push(L.circle([stats[i].lat, stats[i].long], conditionVisualize(stats[i].hpulminarydisease) , {
+                            color: 'orange',
+                            fillColor: 'orange',
+                            fillOpacity: 0.3 })
+                            .bindPopup("<h1>" + stats[i].hpulminarydisease + "</h1> Pulminary Disease Hospital Visit Rate <br> per 100,000 of population in " + stats[i].title ));
+
+                        }
+                        var hpulminarydiseaseLayer=L.layerGroup(hpulminarydiseaseArr);
+
+                        var hdiabetesArr = [];
+                        for (var i=0; i<42; i++)
+                        {
+                          hdiabetesArr.push(L.circle([stats[i].lat, stats[i].long], conditionVisualize(stats[i].hdiabetes) , {
+                            color: 'orange',
+                            fillColor: 'orange',
+                            fillOpacity: 0.3 })
+                            .bindPopup("<h1>" + stats[i].hdiabetes + "</h1> Diabetes Hospital Visit Rate <br> per 100,000 of population in " + stats[i].title ));
+
+                        }
+                        var hdiabetesLayer=L.layerGroup(hdiabetesArr);
+
+                        var hospMap = L.map('map_div2',{
+                          center: new L.LatLng(32.95,-116.9),
+                          zoom: 9,
+                          layers: [hheartdiseaseLayer, exerciseLayer]
+                        });
+
+                        var mapLayer2 = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        }).addTo(hospMap);
+
+                        var baseMaps2 = {
+                          "Heart Disease Hospital Visit Rate per 100,000 of population (2011)": hheartdiseaseLayer,
+                          "Stroke Hospital Visit Rate per 100,000 of population (2011)": hstrokeLayer,
+                          "Asthma Hospital Visit Rate per 100,000 of population (2011)": hasthmaLayer,
+                          "Pulminary Disease Hospital Visit Rate per 100,000 of population (2011)": hpulminarydiseaseLayer,
+                          "Diabetes Hospital Visit Rate per 100,000 of population (2011)": hdiabetesLayer
+
+                        };
+                        var overlayMaps2 = {
+                          "Exercise at Home 2+Times per Week, Ages 18+ (2013)": exerciseLayer,
+                          "Presently Controlling Diet, Ages 18+ (2013)": dietLayer,
+                          "Current Smokers, Ages 18+ (2011)": smokeLayer,
+                          "Overweight, Ages 18+ (2011)": overweightLayer,
+                          "Ate Fast Food 3+ Times per Week, All Ages (2011)": fastfoodLayer,
+                          "Eats 5+ Servings of Fruits & Vegetables, Ages 2-11 (2011)": fruitsLayer,
+                          "Physically Active >=1hr, 5+ Days per Week, Ages 5-11 (2011)": activeLayer,
+                          "Below Federal Poverty Level (2011)": povertyLayer,
+                          "Population with a Bachelor's Degree or Higher (2011)": degreeLayer,
+                          "Total Population with (2011)": populationLayer,
+                          "Total Median Household Income (2011)": incomeLayer
+
+                        };
+
+                        L.control.layers(baseMaps2, overlayMaps2).addTo(hospMap);
+
+                        for (var i=0; i<42; i++){
+                          if (stats[i].SRA == !{JSON.stringify(name)}){
+                            var marker = L.marker([stats[i].lat, stats[i].long]).addTo(hospMap);
+                          }
+                        }
+                       setInterval(function(){ hospMap.invalidateSize()}, 400);
+
+                      }());
+
+
                 #map3.tab-pane
                   //
                     Div that will hold the chart
                   #map_div3
 
+                    include includes/mapdata.jade
+
+                    include includes/maproute.jade
+
+                    script.
+                      (function() {
+
+                        var eheartdiseaseArr = [];
+                        for (var i=0; i<42; i++)
+                        {
+                          eheartdiseaseArr.push(L.circle([stats[i].lat, stats[i].long], conditionVisualize(stats[i].eheartdisease) , {
+                            color: 'orange',
+                            fillColor: 'orange',
+                            fillOpacity: 0.3 })
+                            .bindPopup("<h1>" + stats[i].eheartdisease + "</h1> Heart Disease Emergency Visit Rate <br> per 100,000 of population in " + stats[i].title ));
+
+                        }
+                        var eheartdiseaseLayer=L.layerGroup(eheartdiseaseArr);
+
+                        var estrokeArr = [];
+                        for (var i=0; i<42; i++)
+                        {
+                          estrokeArr.push(L.circle([stats[i].lat, stats[i].long], conditionVisualize(stats[i].estroke) , {
+                            color: 'orange',
+                            fillColor: 'orange',
+                            fillOpacity: 0.3 })
+                            .bindPopup("<h1>" + stats[i].estroke + "</h1> Stroke Emergency Visit Rate <br> per 100,000 of population in " + stats[i].title ));
+
+                        }
+                        var estrokeLayer=L.layerGroup(estrokeArr);
+
+                        var easthmaArr = [];
+                        for (var i=0; i<42; i++)
+                        {
+                          easthmaArr.push(L.circle([stats[i].lat, stats[i].long], stats[i].easthma , {
+                            color: 'orange',
+                            fillColor: 'orange',
+                            fillOpacity: 0.3 })
+                            .bindPopup("<h1>" + stats[i].easthma + "</h1> Asthma Emergency Visit Rate <br> per 100,000 of population in " + stats[i].title ));
+
+                        }
+                        var easthmaLayer=L.layerGroup(easthmaArr);
+
+                        var epulminarydiseaseArr = [];
+                        for (var i=0; i<42; i++)
+                        {
+                          epulminarydiseaseArr.push(L.circle([stats[i].lat, stats[i].long], conditionVisualize(stats[i].epulminarydisease) , {
+                            color: 'orange',
+                            fillColor: 'orange',
+                            fillOpacity: 0.3 })
+                            .bindPopup("<h1>" + stats[i].epulminarydisease + "</h1> Pulminary Disease Emergency Visit Rate <br> per 100,000 of population in " + stats[i].title ));
+
+                        }
+                        var epulminarydiseaseLayer=L.layerGroup(epulminarydiseaseArr);
+
+                        var ediabetesArr = [];
+                        for (var i=0; i<42; i++)
+                        {
+                          ediabetesArr.push(L.circle([stats[i].lat, stats[i].long], conditionVisualize(stats[i].ediabetes) , {
+                            color: 'orange',
+                            fillColor: 'orange',
+                            fillOpacity: 0.3 })
+                            .bindPopup("<h1>" + stats[i].ediabetes + "</h1> Diabetes Emergency Visit Rate <br> per 100,000 of population in " + stats[i].title ));
+
+                        }
+                        var ediabetesLayer=L.layerGroup(ediabetesArr);
+
+                        var emergMap = L.map('map_div3',{
+                          center: new L.LatLng(32.95,-116.9),
+                          zoom: 9,
+                          layers: [eheartdiseaseLayer, exerciseLayer]
+                        });
+
+                        var mapLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        }).addTo(emergMap);
+
+                        var baseMaps = {
+                          "Heart Disease Emergency Visit Rate per 100,000 of population (2011)": eheartdiseaseLayer,
+                          "Stroke Emergency Visit Rate per 100,000 of population (2011)": estrokeLayer,
+                          "Asthma Emergency Visit Rate per 100,000 of population (2011)": easthmaLayer,
+                          "Pulminary Disease Emergency Visit Rate per 100,000 of population (2011)": epulminarydiseaseLayer,
+                          "Diabetes Emergency Visit Rate per 100,000 of population (2011)": ediabetesLayer
+
+                        };
+                        var overlayMaps = {
+                          "Exercise at Home 2+Times per Week, Ages 18+ (2013)": exerciseLayer,
+                          "Presently Controlling Diet, Ages 18+ (2013)": dietLayer,
+                          "Current Smokers, Ages 18+ (2011)": smokeLayer,
+                          "Overweight, Ages 18+ (2011)": overweightLayer,
+                          "Ate Fast Food 3+ Times per Week, All Ages (2011)": fastfoodLayer,
+                          "Eats 5+ Servings of Fruits & Vegetables, Ages 2-11 (2011)": fruitsLayer,
+                          "Physically Active >=1hr, 5+ Days per Week, Ages 5-11 (2011)": activeLayer,
+                          "Below Federal Poverty Level (2011)": povertyLayer,
+                          "Population with a Bachelor's Degree or Higher (2011)": degreeLayer,
+                          "Total Population with (2011)": populationLayer,
+                          "Total Median Household Income (2011)": incomeLayer
+
+                        };
+
+                        L.control.layers(baseMaps, overlayMaps).addTo(emergMap);
+
+                        for (var i=0; i<42; i++){
+                          if (stats[i].SRA == !{JSON.stringify(name)}){
+                            var marker = L.marker([stats[i].lat, stats[i].long]).addTo(emergMap);
+                          }
+                        }
+
+                       setInterval(function(){ emergMap.invalidateSize()}, 400);
+
+                      }());
 
 
         .row-fluid
